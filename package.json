@@ -16,7 +16,8 @@
   "alias": {
     "assets": "./assets",
     "components": "./components",
-    "library": "./library"
+    "library": "./library",
+    "models": "./models"
   },
   "engines": {
     "node": "12.18.3 || >=14"

@@ -27,9 +27,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "./config",
-    "./src/modules.d.ts",
-    "./src/**/*"
+    "./helpers",
+    "./models"
   ],
   "exclude": [
     "node_modules",
