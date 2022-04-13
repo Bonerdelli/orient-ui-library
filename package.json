@@ -43,8 +43,7 @@
   },
   "peerDependencies": {
     "antd": "4.19.5",
-    "react": "16.14.0",
-    "react-dom": "16.11.0"
+    "react": "16.14.0"
   },
   "devDependencies": {
     "@types/lodash": "4.14.181",
