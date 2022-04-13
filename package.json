@@ -15,8 +15,8 @@
   },
   "alias": {
     "assets": "./assets",
-    "components": "./src/components",
-    "library": "./src/library"
+    "components": "./components",
+    "library": "./library"
   },
   "engines": {
     "node": "12.18.3 || >=14"
