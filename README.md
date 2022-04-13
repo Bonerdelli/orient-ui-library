@@ -6,7 +6,7 @@ Shared UI components and helpers library for front-end projects
 
 1. Install dependencies using `yarn install`
 
-1. Write a some great thing! You can generate components using `yarn generate NewGreatThing`
+1. Make a link to use this library in your local projects `yarn link`
 
 1. Make a commit. Code linter and prettier will be runs automatically
 
