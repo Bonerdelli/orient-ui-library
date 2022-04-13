@@ -1,0 +1,79 @@
+{
+  "name": "orient-ui-library",
+  "version": "0.0.1",
+  "description": "ORIENT: Shared UI components and helpers library",
+  "author": "Andrew Nekrasov <bonerdelli@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "lint": "eslint ./src -f table --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint ./src -f table --fix --ext .js,.jsx,.ts,.tsx",
+    "prettier": "prettier --check ./src",
+    "prettier:fix": "prettier --write ./src",
+    "pre-commit": "npm run lint:fix && npm run prettier:fix",
+    "prepare": "husky install",
+    "tsc": "tsc"
+  },
+  "alias": {
+    "assets": "./assets",
+    "components": "./src/components",
+    "library": "./src/library"
+  },
+  "engines": {
+    "node": "12.18.3 || >=14"
+  },
+  "browserslist": [
+    "> 1%",
+    "not dead"
+  ],
+  "targets": {
+    "web": {
+      "engines": {
+        "browsers": [
+          "> 1%",
+          "not dead"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "dayjs": "1.11.0",
+    "lodash": "4.17.21",
+    "superagent": "7.1.1"
+  },
+  "peerDependencies": {
+    "antd": "4.19.5",
+    "react": "16.14.0",
+    "react-dom": "16.11.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.181",
+    "@types/react": "17.0.43",
+    "@types/react-dom": "17.0.14",
+    "@types/react-router-dom": "5.3.3",
+    "@types/superagent": "4.1.15",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
+    "eslint": "8.12.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.4.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.7",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.6.2",
+    "process": "^0.11.10",
+    "rimraf": "3.0.2",
+    "typescript": "4.6.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "*.{js,ts,tsx,css,less,md,json}": "prettier --write"
+  }
+}
