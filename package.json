@@ -37,13 +37,15 @@
     }
   },
   "dependencies": {
+    "antd": "4.19.5",
     "dayjs": "1.11.0",
     "lodash": "4.17.21",
     "superagent": "7.1.1"
   },
   "peerDependencies": {
     "antd": "4.19.5",
-    "react": "16.14.0"
+    "react": "16.14.0",
+    "react-dom": "16.11.0"
   },
   "devDependencies": {
     "@types/lodash": "4.14.181",
