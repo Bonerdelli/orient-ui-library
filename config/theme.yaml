@@ -1,3 +1,4 @@
-primary-color: '#1DA57A'
-layout-header-background: '#1DA57A'
+primary-color: '#1da57a'
+layout-header-background: '#1da57a'
+# layout-header-background: '#375aa0' # ORIENT brand color
 layout-header-height: 48px
