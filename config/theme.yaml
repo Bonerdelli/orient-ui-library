@@ -12,4 +12,5 @@ layout-header-height: 48px
 # Project-specific vars
 ###
 
-side-navigation-width: 240 # NOTE: default is 200 # TODO: universalize optionCase and units
+side-navigation-width: 260 # NOTE: default is 200 # TODO: universalize optionCase and units
+side-navigation-collapsed-width: 60 # NOTE: default is 80
