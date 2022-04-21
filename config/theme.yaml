@@ -1,4 +1,15 @@
+###
+# Antd theme vars (used for override default LESS variables)
+# TODO: separate this or make auto-generation
+###
+
 primary-color: '#1da57a'
 layout-header-background: '#1da57a'
 # layout-header-background: '#375aa0' # ORIENT brand color
 layout-header-height: 48px
+
+###
+# Project-specific vars
+###
+
+side-navigation-width: 240 # NOTE: default is 200 # TODO: universalize optionCase and units
