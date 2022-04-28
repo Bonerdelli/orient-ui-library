@@ -4,7 +4,7 @@
   "description": "ORIENT: Shared UI components and helpers library",
   "author": "Andrew Nekrasov <bonerdelli@gmail.com>",
   "license": "UNLICENSED",
-  "index": "index.ts",
+  "index": "./src/index.ts",
   "scripts": {
     "lint": "eslint ./src -f table --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint ./src -f table --fix --ext .js,.jsx,.ts,.tsx",
@@ -17,9 +17,9 @@
   "alias": {
     "assets": "./assets",
     "config": "./config",
-    "components": "./components",
-    "library": "./library",
-    "models": "./models"
+    "components": "./src/components",
+    "library": "./src/library",
+    "models": "./src/models"
   },
   "engines": {
     "node": "12.18.3 || >=14"

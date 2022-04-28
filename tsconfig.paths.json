@@ -3,10 +3,10 @@
     "baseUrl": ".",
     "paths": {
       "assets/*": ["assets/*"],
-      "components/*": ["components/*"],
       "config/*": ["config/*"],
-      "library/*": ["library/*"],
-      "models/*": ["models/*"]
+      "components/*": ["src/components/*"],
+      "library/*": ["src/library/*"],
+      "models/*": ["src/models/*"]
     }
   }
 }

@@ -1,0 +1,70 @@
+###
+# Localization for common models
+###
+
+common:
+  id: Identifier # Идентификатор
+  createdAt: Date Created # Дата создания
+  updatedAt: Date Updated # Дата обновления
+
+modelTitle:
+  company: Company # Компания
+  companyContact: Company Contact # Контакт компании
+  companyFounder: Company Founder # Основатель компании
+  companyRequisites: Company Requisites # Реквизиты компании
+
+company:
+  userId: User Identifier # number
+  fullName: Full Name #
+  shortName: Short Name #
+  inn: INN #
+  isMsp: Is company MSP # boolean
+  capital: Capital # number
+  currency: Currency # number
+  regAuthority: Registration Authority #
+  regDate: Registration Date #
+  regNumber: Registration Number #
+  address: Address #
+  phones: Phones #
+  email: Email #
+  opf: OPF #
+  oked: OKED #
+  soogu: SOOGU #
+  soato: SOATO #
+  state: State #
+
+companyContact:
+  companyId: Company # Компания
+  primaryEmail: Primary Email #
+  additionalEmail: Additional Email #
+  primaryPhone: Primary Phone #
+  additionalPhone: Additional Phone #
+
+companyFounder:
+  companyId: Company # Компания
+  lastName: Last Name #
+  firstName: First Name #
+  secondName: Second Name #
+  inn: INN #
+  ownership: Ownership # number
+  isIo: Individual entrepreneur # Индивидуальный предприниматель
+  isAttorney: Attorney # Адвокат
+  passportType: Passport Type #
+  passportSeries: Passport Series #
+  passportNumber: Passport Number #
+  passportIssueDate: Passport Issue Date #
+  passportIssuePlace: Passport Issue Place #
+  passportIssuerCode: Passport Issuer Code #
+  passportIssuerName: Passport Issuer Name #
+  birthdate: Birthdate #
+  birthplace: Birthplace #
+  isMaleGender: Is Male Gender # Мужской пол         # TODO: почему?
+  passportValidDate: Passport Validity Date #
+  nationality: Nationality #
+  address: Address #
+
+companyRequisites:
+  companyId: Company # Компания
+  bankName: Bank Name #
+  mfo: MFO #
+  accountNumber: Account Number #
