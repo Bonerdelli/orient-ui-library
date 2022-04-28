@@ -3,68 +3,114 @@
 ###
 
 common:
-  id: Identifier # Идентификатор
-  createdAt: Date Created # Дата создания
-  updatedAt: Date Updated # Дата обновления
-
-modelTitle:
-  company: Company # Компания
-  companyContact: Company Contact # Контакт компании
-  companyFounder: Company Founder # Основатель компании
-  companyRequisites: Company Requisites # Реквизиты компании
+  id:
+    title: Identifier
+  createdAt:
+    title: Date Created
+  updatedAt:
+    title: Date Updated
 
 company:
-  userId: User Identifier # number
-  fullName: Full Name #
-  shortName: Short Name #
-  inn: INN #
-  isMsp: Is company MSP # boolean
-  capital: Capital # number
-  currency: Currency # number
-  regAuthority: Registration Authority #
-  regDate: Registration Date #
-  regNumber: Registration Number #
-  address: Address #
-  phones: Phones #
-  email: Email #
-  opf: OPF #
-  oked: OKED #
-  soogu: SOOGU #
-  soato: SOATO #
-  state: State #
+  title: Company
+  fields:
+    fullName:
+      title: Name of the Legal Entity
+    shortName:
+      title: Short Name of the Legal Entity
+    inn:
+      title: INN
+    isMsp:
+      title: Small business company
+    capital:
+      title: Authorized fund
+    currency:
+      title: Currency
+    regAuthority:
+      title: Registration Authority
+    regDate:
+      title: Registration Date
+    regNumber:
+      title: Registration Number
+    address:
+      title: Address
+    phones:
+      title: Contact phone numbers
+    email:
+      title: E-mail Address
+    opf:
+      title: OPF Code
+    oked:
+      title: OKED Code
+      description: OKED Type Code(s)
+    soogu:
+      title: SOOGU Code
+    soato:
+      title: SOATO Code
+    state:
+      title: State
 
 companyContact:
-  companyId: Company # Компания
-  primaryEmail: Primary Email #
-  additionalEmail: Additional Email #
-  primaryPhone: Primary Phone #
-  additionalPhone: Additional Phone #
+  title: Company Contact
+  fields:
+    primaryEmail:
+      title: Primary E-mail Address
+    additionalEmail:
+      title: Additional E-mail Address
+    primaryPhone:
+      title: Primary Phone
+    additionalPhone:
+      title: Additional Phone
 
 companyFounder:
-  companyId: Company # Компания
-  lastName: Last Name #
-  firstName: First Name #
-  secondName: Second Name #
-  inn: INN #
-  ownership: Ownership # number
-  isIo: Individual entrepreneur # Индивидуальный предприниматель
-  isAttorney: Attorney # Адвокат
-  passportType: Passport Type #
-  passportSeries: Passport Series #
-  passportNumber: Passport Number #
-  passportIssueDate: Passport Issue Date #
-  passportIssuePlace: Passport Issue Place #
-  passportIssuerCode: Passport Issuer Code #
-  passportIssuerName: Passport Issuer Name #
-  birthdate: Birthdate #
-  birthplace: Birthplace #
-  isMaleGender: Is Male Gender # Мужской пол         # TODO: почему?
-  passportValidDate: Passport Validity Date #
-  nationality: Nationality #
-  address: Address #
+  title: Company Founder
+  fields:
+    lastName:
+      title: Last Name
+    firstName:
+      title: First Name
+    secondName:
+      title: Second Name
+    inn:
+      title: INN
+    ownership:
+      title: Share
+    isIo:
+      title: Executive agency
+    isAttorney:
+      title: Attorney-in-fact
+    passportType:
+      title: Document Type
+    passportSeries:
+      title: Series
+    passportNumber:
+      title: Number
+    passportIssueDate:
+      title: Date of Issue
+    passportIssuePlace:
+      title: Place of Passport
+    passportIssuerCode:
+      title: Issuer Code
+    passportIssuerName:
+      title: Issuer Name
+    birthdate:
+      title: Date of Birth
+    birthplace:
+      title: Place of Birth
+    isMaleGender:
+      title: Gender
+    passportValidDate:
+      title: Expiration Date
+    nationality:
+      title: Nationality
+    address:
+      title: Registration address
 
 companyRequisites:
-  companyId: Company # Компания
-  bankName: Bank Name #
-  mfo: MFO #
-  accountNumber: Account Number #
+  title: Company Requisites
+  fields:
+    bankName:
+      title: Bank Name
+    mfo:
+      title: MFO
+    accountNumber:
+      title: Account Number
