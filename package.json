@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "index": "./src/index.ts",
   "scripts": {
+    "generate:api:models": "npx openapi-typescript ./config/api-schema.json -o ./src/library/api/schema.ts -c ./.prettierrc.js",
     "lint": "eslint ./src -f table --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint ./src -f table --fix --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --check ./src",
