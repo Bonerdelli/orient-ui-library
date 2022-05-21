@@ -27,7 +27,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "./src"
+    "./library",
+    "./components",
+    "./pages"
   ],
   "exclude": [
     "node_modules",
