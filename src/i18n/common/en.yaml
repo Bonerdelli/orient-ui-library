@@ -1,0 +1,32 @@
+user:
+  title: User
+  actions:
+    login:
+      title: Login
+    logout:
+      title: Logout
+
+actions:
+  add:
+    title: Add
+  edit:
+    title: Edit
+  delete:
+    title: Delete
+  refresh:
+    title: Refresh
+  reload:
+    title: Reload
+
+errors:
+  startupError:
+    title: Application initialization error
+  dataLoadingError:
+    title: Data loading error
+    desc: An error occurred while loading data. Try to refresh the page
+  apiUnavailable:
+    title: Server is not available
+    desc: There is no connection to the server. Check Internet connection
+  apiTimeout:
+    title: Server response timed out
+    desc: The server did not respond within allowed time. Check Internet connection

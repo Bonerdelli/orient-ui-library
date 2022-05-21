@@ -18,7 +18,8 @@
   "alias": {
     "assets": "./assets",
     "config": "./config",
-    "components": "./src/components",
+    "components": "./src/library/components",
+    "pages": "./src/library/pages",
     "library": "./src/library",
     "models": "./src/models"
   },

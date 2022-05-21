@@ -27,8 +27,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "./helpers",
-    "./models"
+    "./src"
   ],
   "exclude": [
     "node_modules",
