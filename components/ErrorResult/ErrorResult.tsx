@@ -14,6 +14,7 @@ export const ErrorResultView: React.FC<ErrorResultProps> = ({
   status = 'error',
   reloadCallback,
 }) => (
+  // TODO: translation
   <Result
     status={status}
     title={title}
