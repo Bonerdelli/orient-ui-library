@@ -1,1 +1,2 @@
-export * from './ErrorResult'
+export * from './Div'
+export * from './ErrorResultView'

@@ -5,7 +5,7 @@ import './TemplateName.style.less'
 
 const { Paragraph } = Typography
 
-const TemplateName = () => {
+export const TemplateName = () => {
   const { t } = useTranslation()
   return (
     <Layout className="TemplateName" data-testid="TemplateName">
@@ -13,5 +13,3 @@ const TemplateName = () => {
     </Layout>
   )
 }
-
-export default TemplateName

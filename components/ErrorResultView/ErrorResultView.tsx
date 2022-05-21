@@ -1,14 +1,15 @@
-import React from 'react'
 import { Result, Button } from 'antd'
 
-type ErrorResultProps = {
+type ErrorResultViewProps = {
   title?: string,
   message?: string,
   status?: 'error' | 'warning' | 403 | 404 | 500,
   reloadCallback?: () => void,
 }
 
-export const ErrorResultView: React.FC<ErrorResultProps> = ({
+// FIXME: doesn't work
+
+export const ErrorResultView: React.FC<ErrorResultViewProps> = ({
   title = 'commonErrors.dataLoadingError.title',
   message = 'commonErrors.dataLoadingError.desc',
   status = 'error',
