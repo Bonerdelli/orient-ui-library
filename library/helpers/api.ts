@@ -1,11 +1,12 @@
 /**
- * Helpers to handle API queries
+ * API integration functions and helpers
  *
  * @author Nekrasov Andrew <bonerdelli@gmail.com>
  * @package orient-ui
  */
 
-import request, { Response } from 'superagent'
+import axios from 'axios'
+import { Middleware } from 'redux'
 
 export const API_URL = process.env.API_URL || 'http://localhost:3001'
 export const REQUEST_TIMEOUT = 5000 // in milliseconds
@@ -27,6 +28,19 @@ export interface ApiSuccessResponse {
 }
 
 export type ApiCrudResponse<T = ApiSuccessResponse> = T | ApiErrorResponse
+
+/**
+ * Redux Middleware to set-up authorization header
+ */
+function createAuthMiddleware(): Middleware {
+  return ({ getState }) => next => action => {
+    const { token } = getState().currentAuth
+    axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : false
+    return next(action)
+  };
+}
+
+export const axiosMiddleware = createAuthMiddleware()
 
 /**
  * Fetch and parse JSON file

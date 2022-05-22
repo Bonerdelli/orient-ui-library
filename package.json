@@ -15,6 +15,7 @@
     "prettier": "prettier --check ./src",
     "prettier:fix": "prettier --write ./src",
     "pre-commit": "npm run lint:fix && npm run prettier:fix",
+    "post-install": "npm link react && npm link react-dom && npm link react-i18next && npm link redux",
     "prepare": "husky install",
     "tsc": "tsc"
   },
@@ -44,12 +45,9 @@
     }
   },
   "dependencies": {
-    "antd": "4.19.5",
-    "dayjs": "1.11.0",
-    "lodash": "4.17.21",
-    "react": "16.14.0",
-    "react-dom": "16.11.0",
-    "superagent": "7.1.1"
+    "antd": "4.20.6",
+    "axios": "0.27.2",
+    "lodash": "4.17.21"
   },
   "peerDependencies": {
     "antd": "4.19.5",
