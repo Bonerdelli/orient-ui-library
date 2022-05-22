@@ -4,25 +4,20 @@
   "description": "ORIENT: Shared UI components and helpers library",
   "author": "Andrew Nekrasov <bonerdelli@gmail.com>",
   "license": "UNLICENSED",
-  "source": "./index.ts",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "index": "./index.ts",
   "scripts": {
     "generate": "generate-react component --",
     "generate:page": "generate-react component --type=page --",
-    "generate:models": "npx openapi-typescript ./config/api-schema.json -o ./library/api/schema.ts -c ./.prettierrc.js",
-    "generate:models:dev": "npx openapi-typescript https://api.dev.dgalaxy.uz/api/v1/v3/api-docs -o ./library/api/schema.ts -c ./.prettierrc.js",
-    "build": "run-p build:esm build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "lint": "eslint . -f table --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . -f table --fix --ext .js,.jsx,.ts,.tsx",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write .",
+    "generate:models": "npx openapi-typescript ./config/api-schema.json -o ./src/library/api/schema.ts -c ./.prettierrc.js",
+    "generate:models:dev": "npx openapi-typescript https://api.dev.dgalaxy.uz/api/v1/v3/api-docs -o ./src/library/api/schema.ts -c ./.prettierrc.js",
+    "lint": "eslint ./src -f table --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint ./src -f table --fix --ext .js,.jsx,.ts,.tsx",
+    "prettier": "prettier --check ./src",
+    "prettier:fix": "prettier --write ./src",
     "pre-commit": "npm run lint:fix && npm run prettier:fix",
+    "post-install": "npm link react && npm link react-dom && npm link react-i18next && npm link redux",
     "prepare": "husky install",
-    "watch": "tsc -w"
+    "tsc": "tsc"
   },
   "alias": {
     "assets": "./assets",
@@ -32,9 +27,6 @@
     "models": "./library/models",
     "pages": "./pages"
   },
-  "files": [
-    "./dist"
-  ],
   "engines": {
     "node": "12.18.3 || >=14"
   },
@@ -54,12 +46,11 @@
   },
   "dependencies": {
     "antd": "4.20.6",
-    "lodash": "4.17.21",
-    "superagent": "7.1.1"
+    "axios": "0.27.2",
+    "lodash": "4.17.21"
   },
   "peerDependencies": {
-    "dayjs": "1.11.0",
-    "i18next": "21.6.14",
+    "antd": "4.19.5",
     "react": "16.14.0",
     "react-dom": "16.11.0",
     "react-i18next": "11.16.2"
@@ -82,7 +73,6 @@
     "eslint-plugin-react-hooks": "4.4.0",
     "generate-react-cli": "7.1.0",
     "husky": "7.0.4",
-    "js-yaml": "4.1.0",
     "lint-staged": "12.3.7",
     "npm-run-all": "4.1.5",
     "prettier": "2.6.2",
