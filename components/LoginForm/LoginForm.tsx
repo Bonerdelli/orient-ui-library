@@ -9,7 +9,7 @@ export interface LoginFormProps {
 
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({}) => {
+const LoginForm: React.FC<LoginFormProps> = ({}) => {
   const { t } = useTranslation()
   const onFinish = () => {}
   const onFinishFailed = () => {}
@@ -53,3 +53,5 @@ export const LoginForm: React.FC<LoginFormProps> = ({}) => {
     </Form>
   )
 }
+
+export default LoginForm

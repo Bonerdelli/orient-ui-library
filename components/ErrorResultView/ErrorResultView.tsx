@@ -9,7 +9,7 @@ type ErrorResultViewProps = {
 
 // FIXME: doesn't work
 
-export const ErrorResultView: React.FC<ErrorResultViewProps> = ({
+const ErrorResultView: React.FC<ErrorResultViewProps> = ({
   title = 'commonErrors.dataLoadingError.title',
   message = 'commonErrors.dataLoadingError.desc',
   status = 'error',
@@ -27,3 +27,5 @@ export const ErrorResultView: React.FC<ErrorResultViewProps> = ({
     ]}
   />
 )
+
+export default ErrorResultView
