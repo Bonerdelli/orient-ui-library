@@ -9,6 +9,7 @@
     "generate": "generate-react component --",
     "generate:page": "generate-react component --type=page --",
     "generate:models": "npx openapi-typescript ./config/api-schema.json -o ./src/library/api/schema.ts -c ./.prettierrc.js",
+    "generate:models:dev": "npx openapi-typescript https://api.dev.dgalaxy.uz/api/v1/v3/api-docs -o ./src/library/api/schema.ts -c ./.prettierrc.js",
     "lint": "eslint ./src -f table --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint ./src -f table --fix --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --check ./src",
