@@ -28,6 +28,7 @@
   },
   "include": [
     "./library",
+    "./library/modules.d",
     "./components",
     "./pages"
   ],
