@@ -1,0 +1,32 @@
+user:
+  title: Пользователь
+  actions:
+    login:
+      title: Вход
+    logout:
+      title: Выйти
+
+actions:
+  add:
+    title: Добавить
+  edit:
+    title: Редактировать
+  delete:
+    title: Удалить
+  refresh:
+    title: Обновить
+  reload:
+    title: Перезагрузить
+
+errors:
+  startupError:
+    title: Ошибка инициализации приложения
+  dataLoadingError:
+    title: Ошибка загрузки данных
+    desc: Во время загрузки данных произошла ошибка. Попробуйте обновить страницу
+  apiUnavailable:
+    title: Сервер недоступен
+    desc: Нет подключения к серверу. Проверьте Интернет-соединение
+  apiTimeout:
+    title: Превышен интервал ожидания данных от сервера
+    desc: Сервер не ответил за допустимое время. Проверьте Интернет-соединение

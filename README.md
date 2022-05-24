@@ -20,6 +20,8 @@ Runs code linter. To fix issues that could be fixed automatically, use the `yarn
 
 Check the code style. Use the `yarn prettier:fix` command to fix code style automatically
 
+<!-- TODO: fill this with commands from package.json (generators) -->
+
 ## Tech stack
 
 - UI Framework: [And Design](https://ant.design)

@@ -4,9 +4,10 @@
     "paths": {
       "assets/*": ["assets/*"],
       "config/*": ["config/*"],
-      "components/*": ["src/components/*"],
-      "library/*": ["src/library/*"],
-      "models/*": ["src/models/*"]
+      "library/*": ["library/*"],
+      "components/*": ["components/*"],
+      "models/*": ["library/models/*"],
+      "pages/*": ["pages/*"]
     }
   }
 }
