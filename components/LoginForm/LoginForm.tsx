@@ -1,4 +1,4 @@
-// import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { Form, Input, Button } from 'antd'
 
 import './LoginForm.style.less'
@@ -10,7 +10,7 @@ export interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({}) => {
-  const t = () => {}
+  const { t } = useTranslation()
   const onFinish = () => {}
   const onFinishFailed = () => {}
   return (
@@ -24,22 +24,22 @@ const LoginForm: React.FC<LoginFormProps> = ({}) => {
       autoComplete="off"
     >
       <FormItem
-
+        label={t('common.forms.authenticate.login.label')}
         name="username"
         rules={[{
           required: true,
-          message: 'Please input your username!',
+          message: t('common.forms.authenticate.login.validation.required'),
         }]}
       >
         <Input />
       </FormItem>
 
       <FormItem
-
+        label={t('common.forms.authenticate.password.label')}
         name="password"
         rules={[{
           required: true,
-          message: 'Please input your password!',
+          message: t('common.forms.authenticate.password.validation.required'),
         }]}
       >
         <Input.Password />
@@ -47,7 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({}) => {
 
       <FormItem wrapperCol={{ offset: 8, span: 16 }}>
         <Button type="primary" htmlType="submit">
-
+          {t('common.user.actions.login.title')}
         </Button>
       </FormItem>
     </Form>

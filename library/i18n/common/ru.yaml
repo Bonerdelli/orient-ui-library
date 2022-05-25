@@ -6,6 +6,19 @@ user:
     logout:
       title: Выйти
 
+forms:
+  authenticate:
+    login:
+      label: Пользователь
+      validation:
+        required: Имя пользователя обязательно для заполнения
+      placeholder: Введите имя пользователя
+    password:
+      label: Пароль
+      validation:
+        required: Пароль обязателен для заполнения
+      placeholder: Введите пароль
+
 actions:
   add:
     title: Добавить

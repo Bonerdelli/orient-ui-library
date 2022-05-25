@@ -6,6 +6,19 @@ user:
     logout:
       title: Logout
 
+forms:
+  authenticate:
+    login:
+      label: Login
+      validation:
+        required: Login is required
+      placeholder: Please type login
+    password:
+      label: Password
+      validation:
+        required: Password is required
+      placeholder: Please type password
+
 actions:
   add:
     title: Add
