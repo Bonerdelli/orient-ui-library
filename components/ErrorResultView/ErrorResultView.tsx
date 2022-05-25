@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Result, Button } from 'antd'
 
 type ErrorResultViewProps = {
@@ -7,25 +8,25 @@ type ErrorResultViewProps = {
   reloadCallback?: () => void,
 }
 
-// FIXME: doesn't work
-
 const ErrorResultView: React.FC<ErrorResultViewProps> = ({
-  title = 'commonErrors.dataLoadingError.title',
-  message = 'commonErrors.dataLoadingError.desc',
+  title = 'common.errors.dataLoadingError.title',
+  message = 'common.errors.dataLoadingError.desc',
   status = 'error',
   reloadCallback,
-}) => (
-  // TODO: translation
-  <Result
-    status={status}
-    title={title}
-    subTitle={message}
-    extra={reloadCallback && [
-      <Button key='reload' onClick={() => reloadCallback()}>
-        Перезагрузить
-      </Button>,
-    ]}
-  />
-)
+}) => {
+  const { t } = useTranslation()
+  return (
+    <Result
+      status={status}
+      title={t(title)}
+      subTitle={t(message)}
+      extra={reloadCallback && [
+        <Button key='reload' onClick={() => reloadCallback()}>
+          {t('common.actions.reload.title')}
+        </Button>,
+      ]}
+    />
+  )
+}
 
 export default ErrorResultView
