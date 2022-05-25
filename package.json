@@ -47,8 +47,6 @@
     "antd": "4.19.5",
     "dayjs": "1.11.0",
     "lodash": "4.17.21",
-    "react": "16.14.0",
-    "react-dom": "16.11.0",
     "react-i18next": "11.16.2",
     "superagent": "7.1.1"
   },
