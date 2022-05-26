@@ -7,19 +7,21 @@
   "source": "./index.ts",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "generate": "generate-react component --",
     "generate:page": "generate-react component --type=page --",
     "generate:models": "npx openapi-typescript ./config/api-schema.json -o ./library/api/schema.ts -c ./.prettierrc.js",
     "generate:models:dev": "npx openapi-typescript https://api.dev.dgalaxy.uz/api/v1/v3/api-docs -o ./library/api/schema.ts -c ./.prettierrc.js",
-    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "build": "run-p build:esm build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "lint": "eslint . -f table --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . -f table --fix --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "pre-commit": "npm run lint:fix && npm run prettier:fix",
-    "prepare": "husky install",
-    "tsc": "tsc"
+    "prepare": "husky install"
   },
   "alias": {
     "assets": "./assets",
@@ -29,6 +31,9 @@
     "models": "./library/models",
     "pages": "./pages"
   },
+  "files": [
+    "./dist"
+  ],
   "engines": {
     "node": "12.18.3 || >=14"
   },
