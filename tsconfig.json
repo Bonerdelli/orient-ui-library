@@ -24,13 +24,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "outDir": "./dist"
   },
   "include": [
-    "./library",
-    "./library/modules.d",
-    "./components",
-    "./pages"
+    "./global.d.ts",
+    "./index.ts"
   ],
   "exclude": [
     "node_modules",
