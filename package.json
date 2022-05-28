@@ -53,7 +53,7 @@
     }
   },
   "dependencies": {
-    "antd": "4.19.5",
+    "antd": "4.20.6",
     "lodash": "4.17.21",
     "superagent": "7.1.1"
   },
