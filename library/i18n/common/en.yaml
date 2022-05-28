@@ -43,3 +43,6 @@ errors:
   apiTimeout:
     title: Server response timed out
     desc: The server did not respond within allowed time. Check Internet connection
+  authError:
+    title: Authentication error
+    desc: Check are login and password entered correctly
