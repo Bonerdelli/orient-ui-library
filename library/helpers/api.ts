@@ -8,7 +8,10 @@
 import axios from 'axios'
 import { Middleware } from 'redux'
 
-export const API_URL = process.env.API_URL || 'http://localhost:3001'
+export const API_URL = process.env.API_PROXIED_PATH
+  ? `${process.env.API_PROXIED_PATH}/${process.env.API_VERSION}`
+  : `${process.env.API_URL}/${process.env.API_VERSION}`
+
 export const REQUEST_TIMEOUT = 5000 // in milliseconds
 
 export interface ApiError {
