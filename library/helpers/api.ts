@@ -36,7 +36,8 @@ axios.defaults.timeout = REQUEST_TIMEOUT
  */
 function createAuthMiddleware(): Middleware {
   return ({ getState }) => next => action => {
-    const { token } = getState().currentAuth
+    const { user } = getState()
+    const token = user?.currentAuth?.accessToken ?? false
     axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : false
     return next(action)
   };
