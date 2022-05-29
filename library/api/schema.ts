@@ -4,20 +4,118 @@
  */
 
 export interface paths {
+  '/operator/rejectReason/list': {
+    post: operations['list']
+  }
+  '/operator/order/frameSimple/list': {
+    post: operations['getFrameSimple']
+  }
+  '/operator/order/frame/list': {
+    post: operations['getFrame']
+  }
+  '/operator/order/factor/list': {
+    post: operations['getFactor']
+  }
+  '/operator/customer/list': {
+    post: operations['getCustomers']
+  }
+  '/operator/bank/{id}': {
+    get: operations['getBank']
+    post: operations['update']
+  }
+  '/operator/bank/list': {
+    post: operations['getBanks']
+  }
+  '/customer/company/{companyId}/order/list': {
+    post: operations['getOrders']
+  }
   '/client/upload': {
     post: operations['upload']
   }
-  '/client/company/requisites': {
-    get: operations['founders']
+  '/client/customer/list': {
+    post: operations['getCustomers_1']
+  }
+  '/client/company/{companyId}/requisites': {
+    get: operations['requisites']
     post: operations['saveRequisites']
   }
-  '/client/company/founder': {
-    get: operations['founders_1']
+  '/client/company/{companyId}/order/{orderId}/document/upload/{typeId}': {
+    post: operations['uploadFile']
+  }
+  '/client/company/{companyId}/order/{orderId}/document/attach': {
+    post: operations['attach']
+  }
+  '/client/company/{companyId}/order/{orderId}/document/attach/{typeId}': {
+    post: operations['typedAttach']
+  }
+  '/client/company/{companyId}/order/ready_to_factor/list': {
+    post: operations['getOrdersCompleted']
+  }
+  '/client/company/{companyId}/order/list': {
+    post: operations['getOrders_1']
+  }
+  '/client/company/{companyId}/order/frameSimple/{orderId}/verify': {
+    post: operations['verify']
+  }
+  '/client/company/{companyId}/order/frameSimple/{orderId}/draft': {
+    post: operations['updateDraft']
+  }
+  '/client/company/{companyId}/order/frameSimple/{orderId}/cancel': {
+    post: operations['cancel']
+  }
+  '/client/company/{companyId}/order/frameSimple/draft': {
+    post: operations['createDraft']
+  }
+  '/client/company/{companyId}/order/frame/{orderId}/verify': {
+    post: operations['verify_1']
+  }
+  '/client/company/{companyId}/order/frame/{orderId}/draft': {
+    post: operations['updateDraft_1']
+  }
+  '/client/company/{companyId}/order/frame/{orderId}/cancel': {
+    post: operations['cancel_1']
+  }
+  '/client/company/{companyId}/order/frame/draft': {
+    post: operations['createDraft_1']
+  }
+  '/client/company/{companyId}/order/factor/{orderId}/verify': {
+    post: operations['verify_2']
+  }
+  '/client/company/{companyId}/order/factor/{orderId}/draft': {
+    post: operations['updateDraft_2']
+  }
+  '/client/company/{companyId}/order/factor/{orderId}/cancel': {
+    post: operations['cancel_2']
+  }
+  '/client/company/{companyId}/order/factor/draft': {
+    post: operations['createDraft_2']
+  }
+  '/client/company/{companyId}/offer/list': {
+    post: operations['getOrders_2']
+  }
+  '/client/company/{companyId}/founder': {
+    get: operations['founders']
     post: operations['saveFounder']
   }
-  '/client/company/contacts': {
+  '/client/company/{companyId}/document/{typeId}': {
+    post: operations['uploadCompanyDocument']
+  }
+  '/client/company/{companyId}/contacts': {
     get: operations['contacts']
     post: operations['saveContacts']
+  }
+  '/bank/{bankId}': {
+    get: operations['getBank_1']
+    post: operations['update_1']
+  }
+  '/bank/{bankId}/order/frameSimple/list': {
+    post: operations['getFrameSimple_1']
+  }
+  '/bank/{bankId}/order/frame/list': {
+    post: operations['getFrame_1']
+  }
+  '/bank/{bankId}/order/factor/list': {
+    post: operations['getFactor_1']
   }
   '/auth/refresh': {
     post: operations['refresh']
@@ -27,6 +125,12 @@ export interface paths {
   }
   '/operator': {
     get: operations['testOper']
+  }
+  '/operator/order/graph/{orderType}': {
+    get: operations['getForStatus']
+  }
+  '/operator/order/graph/{orderType}/{statusCode}': {
+    get: operations['getForStatus_1']
   }
   '/dictionary/{name}': {
     get: operations['byKey']
@@ -44,21 +148,109 @@ export interface paths {
     get: operations['get']
   }
   '/client/company': {
+    get: operations['all_1']
+  }
+  '/client/company/{companyId}': {
     get: operations['instance']
   }
-  '/client/company/requisites/{id}': {
+  '/client/company/{companyId}/requisites/{reqId}': {
+    get: operations['requisite']
+    delete: operations['founderDelete']
+  }
+  '/client/company/{companyId}/order/{orderId}/document': {
+    get: operations['getDocuments']
+  }
+  '/client/company/{companyId}/order/frameSimple/{orderId}': {
+    get: operations['getOrder']
+  }
+  '/client/company/{companyId}/order/frame/{orderId}': {
+    get: operations['getOrder_1']
+  }
+  '/client/company/{companyId}/order/factor/{orderId}': {
+    get: operations['get_1']
+  }
+  '/client/company/{companyId}/founder/{founderId}': {
     get: operations['founder']
+    delete: operations['founderDelete_1']
   }
-  '/client/company/full': {
-    get: operations['fullInstance']
+  '/client/company/{companyId}/document': {
+    get: operations['getCompanyDocuments']
   }
-  '/client/company/founder/{id}': {
-    get: operations['founder_1']
+  '/client/company/{companyId}/order/{orderId}/document/{docId}': {
+    delete: operations['deleteDocument']
+  }
+  '/client/company/{companyId}/document/{docId}': {
+    delete: operations['deleteCompanyDocument']
   }
 }
 
 export interface components {
   schemas: {
+    RejectReasonGridRequest: {
+      /** Format: int32 */
+      limit: number
+      /** Format: int32 */
+      page: number
+      orderType: string
+    }
+    GridResponseGridRow: {
+      /** Format: int32 */
+      total: number
+      data: components['schemas']['GridRow'][]
+    }
+    GridRow: { [key: string]: unknown }
+    ServerResponseGridResponseGridRow: {
+      success: boolean
+      data?: components['schemas']['GridResponseGridRow']
+    }
+    OrderGridRequest: {
+      /** Format: int32 */
+      limit: number
+      /** Format: int32 */
+      page: number
+      statuses?: string[]
+    }
+    CustomerGridRequest: {
+      /** Format: int32 */
+      limit: number
+      /** Format: int32 */
+      page: number
+      inn?: string
+    }
+    BankActiveRequest: {
+      isActive: boolean
+    }
+    JBank: {
+      /** Format: int64 */
+      id?: number
+      name?: string
+      shortName?: string
+      inn?: string
+      mfo?: string
+      legalAddress?: string
+      licenseNumber?: string
+      /** Format: date */
+      licenseDate?: string
+      phoneNumber?: string
+      site?: string
+      email?: string
+      isActive?: boolean
+      /** Format: date-time */
+      createdAt?: string
+      /** Format: date-time */
+      updatedAt?: string
+    }
+    ServerResponseJBank: {
+      success: boolean
+      data?: components['schemas']['JBank']
+    }
+    BankGridRequest: {
+      /** Format: int32 */
+      limit: number
+      /** Format: int32 */
+      page: number
+      name?: string
+    }
     ServerResponseUUID: {
       success: boolean
       /** Format: uuid */
@@ -83,6 +275,87 @@ export interface components {
     ServerResponseJCompanyRequisites: {
       success: boolean
       data?: components['schemas']['JCompanyRequisites']
+    }
+    JOrderDocument: {
+      /** Format: int64 */
+      id?: number
+      /** Format: int64 */
+      typeId?: number
+      /** Format: uuid */
+      fileUuid?: string
+      status?: string
+      /** Format: int64 */
+      orderId?: number
+    }
+    ServerResponseJOrderDocument: {
+      success: boolean
+      data?: components['schemas']['JOrderDocument']
+    }
+    ServerResponseListJOrderDocument: {
+      success: boolean
+      data?: components['schemas']['JOrderDocument'][]
+    }
+    GridRequest: {
+      /** Format: int32 */
+      limit: number
+      /** Format: int32 */
+      page: number
+    }
+    ServerResponseUnit: {
+      success: boolean
+      data?: components['schemas']['Unit']
+    }
+    Unit: { [key: string]: unknown }
+    FrameOrderDraftRequest: {
+      /** Format: int64 */
+      customerCompanyId: number
+      /** Format: int64 */
+      founderId?: number
+      /** Format: int64 */
+      requisitesId?: number
+    }
+    JOrder: {
+      /** Format: int64 */
+      id?: number
+      /** Format: date-time */
+      createdAt?: string
+      /** Format: date-time */
+      updatedAt?: string
+      /** Format: int64 */
+      clientCompanyId?: number
+      typeCode?: string
+      status?: string
+      /** Format: int64 */
+      parentOrderId?: number
+      /** Format: int64 */
+      customerCompanyId?: number
+      /** Format: int64 */
+      rejectReasonId?: number
+      rejectComment?: string
+    }
+    ServerResponseJOrder: {
+      success: boolean
+      data?: components['schemas']['JOrder']
+    }
+    FactorOrderDraftUpdateRequest: {
+      amount?: number
+      currencyCode?: string
+      /** Format: int32 */
+      days?: number
+      contractNumber?: string
+      purchaseNumber?: string
+    }
+    FactorOrderDraftCreateRequest: {
+      /** Format: int64 */
+      offerId: number
+    }
+    OfferGridRequest: {
+      /** Format: int32 */
+      limit: number
+      /** Format: int32 */
+      page: number
+      /** Format: int64 */
+      orderId: number
     }
     CompanyFounderSaveRequest: {
       /** Format: int64 */
@@ -150,11 +423,27 @@ export interface components {
       success: boolean
       data?: components['schemas']['JCompanyFounder']
     }
+    JCompanyDocument: {
+      /** Format: int64 */
+      id?: number
+      /** Format: int64 */
+      companyId?: number
+      /** Format: int64 */
+      typeId?: number
+      /** Format: uuid */
+      fileUuid?: string
+      status?: string
+    }
+    ServerResponseJCompanyDocument: {
+      success: boolean
+      data?: components['schemas']['JCompanyDocument']
+    }
     CompanyContactsSaveRequest: {
       primaryEmail?: string
       additionalEmail?: string
       primaryPhone?: string
       additionalPhone?: string
+      site?: string
     }
     JCompanyContacts: {
       /** Format: int64 */
@@ -169,10 +458,24 @@ export interface components {
       additionalEmail?: string
       primaryPhone?: string
       additionalPhone?: string
+      site?: string
     }
     ServerResponseJCompanyContacts: {
       success: boolean
       data?: components['schemas']['JCompanyContacts']
+    }
+    BankUpdateRequest: {
+      name: string
+      shortName?: string
+      inn: string
+      mfo: string
+      legalAddress: string
+      licenseNumber?: string
+      /** Format: date */
+      licenseDate?: string
+      phoneNumber?: string
+      site?: string
+      email?: string
     }
     TokenRefreshDto: {
       refreshToken: string
@@ -194,6 +497,18 @@ export interface components {
       /** Format: int64 */
       data?: number
     }
+    OrderStatusGraphAxis: {
+      from: components['schemas']['OrderStatusGraphVertex']
+      to: components['schemas']['OrderStatusGraphVertex'][]
+    }
+    OrderStatusGraphVertex: {
+      code: string
+      name: string
+    }
+    ServerResponseSetOrderStatusGraphAxis: {
+      success: boolean
+      data?: components['schemas']['OrderStatusGraphAxis'][]
+    }
     ServerResponseListObject: {
       success: boolean
       data?: { [key: string]: unknown }[]
@@ -213,15 +528,12 @@ export interface components {
       createdAt?: string
       /** Format: date-time */
       updatedAt?: string
-      /** Format: int64 */
-      userId?: number
       fullName?: string
       shortName?: string
       inn?: string
       isMsp?: boolean
       capital?: number
-      /** Format: int32 */
-      currency?: number
+      currencyCode?: string
       regAuthority?: string
       /** Format: date */
       regDate?: string
@@ -235,6 +547,10 @@ export interface components {
       soato?: string
       state?: string
     }
+    ServerResponseListJCompany: {
+      success: boolean
+      data?: components['schemas']['JCompany'][]
+    }
     ServerResponseJCompany: {
       success: boolean
       data?: components['schemas']['JCompany']
@@ -243,23 +559,226 @@ export interface components {
       success: boolean
       data?: components['schemas']['JCompanyRequisites'][]
     }
-    CompanyInstance: {
-      company: components['schemas']['JCompany']
-      contacts?: components['schemas']['JCompanyContacts']
-      founders: components['schemas']['JCompanyFounder'][]
+    Info: {
+      /** Format: int64 */
+      documentId: number
+      documentStatus: string
+      /** Format: uuid */
+      fileId: string
+      fileStatus: string
+      /** Format: date-time */
+      createdAt: string
     }
-    ServerResponseCompanyInstance: {
+    OrderDocumentsResponse: {
+      /** Format: int64 */
+      typeId: number
+      type: string
+      info?: components['schemas']['Info']
+    }
+    ServerResponseListOrderDocumentsResponse: {
       success: boolean
-      data?: components['schemas']['CompanyInstance']
+      data?: components['schemas']['OrderDocumentsResponse'][]
+    }
+    FrameOrderInfo: {
+      companyFounder?: components['schemas']['JsonNode']
+      companyRequisites?: components['schemas']['JsonNode']
+    }
+    FrameOrderResponse: {
+      order: components['schemas']['JOrder']
+      info: components['schemas']['FrameOrderInfo']
+      documents: components['schemas']['JOrderDocument'][]
+      graph: components['schemas']['OrderStatusGraphAxis'][]
+    }
+    JsonNode: { [key: string]: unknown }
+    ServerResponseFrameOrderResponse: {
+      success: boolean
+      data?: components['schemas']['FrameOrderResponse']
+    }
+    FactorOrderResponse: {
+      order: components['schemas']['JOrder']
+      info: components['schemas']['JFactorOrder']
+      documents: components['schemas']['JOrderDocument'][]
+      graph: components['schemas']['OrderStatusGraphAxis'][]
+    }
+    JFactorOrder: {
+      /** Format: int64 */
+      id?: number
+      amount?: number
+      currencyCode?: string
+      /** Format: int32 */
+      days?: number
+      contractNumber?: string
+      purchaseNumber?: string
+      /** Format: int64 */
+      bankId?: number
+    }
+    ServerResponseFactorOrderResponse: {
+      success: boolean
+      data?: components['schemas']['FactorOrderResponse']
     }
     ServerResponseListJCompanyFounder: {
       success: boolean
       data?: components['schemas']['JCompanyFounder'][]
     }
+    CompanyDocumentsResponse: {
+      /** Format: int64 */
+      typeId: number
+      type: string
+      info?: components['schemas']['Info']
+    }
+    ServerResponseListCompanyDocumentsResponse: {
+      success: boolean
+      data?: components['schemas']['CompanyDocumentsResponse'][]
+    }
   }
 }
 
 export interface operations {
+  list: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['RejectReasonGridRequest']
+      }
+    }
+  }
+  getFrameSimple: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  getFrame: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  getFactor: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  getCustomers: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CustomerGridRequest']
+      }
+    }
+  }
+  getBank: {
+    parameters: {
+      path: {
+        id: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJBank']
+        }
+      }
+    }
+  }
+  update: {
+    parameters: {
+      path: {
+        id: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJBank']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['BankActiveRequest']
+      }
+    }
+  }
+  getBanks: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['BankGridRequest']
+      }
+    }
+  }
+  getOrders: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
   upload: {
     responses: {
       /** OK */
@@ -278,7 +797,27 @@ export interface operations {
       }
     }
   }
-  founders: {
+  getCustomers_1: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CustomerGridRequest']
+      }
+    }
+  }
+  requisites: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -289,6 +828,11 @@ export interface operations {
     }
   }
   saveRequisites: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -303,7 +847,349 @@ export interface operations {
       }
     }
   }
-  founders_1: {
+  uploadFile: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        typeId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrderDocument']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': {
+          /** Format: binary */
+          file: string
+        }
+      }
+    }
+  }
+  attach: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseListJOrderDocument']
+        }
+      }
+    }
+  }
+  typedAttach: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        typeId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseListJOrderDocument']
+        }
+      }
+    }
+  }
+  getOrdersCompleted: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['GridRequest']
+      }
+    }
+  }
+  getOrders_1: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  verify: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  updateDraft: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrder']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['FrameOrderDraftRequest']
+      }
+    }
+  }
+  cancel: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  createDraft: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrder']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['FrameOrderDraftRequest']
+      }
+    }
+  }
+  verify_1: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  updateDraft_1: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrder']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['FrameOrderDraftRequest']
+      }
+    }
+  }
+  cancel_1: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  createDraft_1: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrder']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['FrameOrderDraftRequest']
+      }
+    }
+  }
+  verify_2: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  updateDraft_2: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['FactorOrderDraftUpdateRequest']
+      }
+    }
+  }
+  cancel_2: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  createDraft_2: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrder']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['FactorOrderDraftCreateRequest']
+      }
+    }
+  }
+  getOrders_2: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OfferGridRequest']
+      }
+    }
+  }
+  founders: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -314,6 +1200,11 @@ export interface operations {
     }
   }
   saveFounder: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -328,7 +1219,36 @@ export interface operations {
       }
     }
   }
+  uploadCompanyDocument: {
+    parameters: {
+      path: {
+        companyId: number
+        typeId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJCompanyDocument']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': {
+          /** Format: binary */
+          file: string
+        }
+      }
+    }
+  }
   contacts: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -339,6 +1259,11 @@ export interface operations {
     }
   }
   saveContacts: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -350,6 +1275,101 @@ export interface operations {
     requestBody: {
       content: {
         'application/json': components['schemas']['CompanyContactsSaveRequest']
+      }
+    }
+  }
+  getBank_1: {
+    parameters: {
+      path: {
+        bankId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJBank']
+        }
+      }
+    }
+  }
+  update_1: {
+    parameters: {
+      path: {
+        bankId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJBank']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['BankUpdateRequest']
+      }
+    }
+  }
+  getFrameSimple_1: {
+    parameters: {
+      path: {
+        bankId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  getFrame_1: {
+    parameters: {
+      path: {
+        bankId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  getFactor_1: {
+    parameters: {
+      path: {
+        bankId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderGridRequest']
       }
     }
   }
@@ -389,6 +1409,37 @@ export interface operations {
       200: {
         content: {
           '*/*': components['schemas']['ServerResponseLong']
+        }
+      }
+    }
+  }
+  getForStatus: {
+    parameters: {
+      path: {
+        orderType: string
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseSetOrderStatusGraphAxis']
+        }
+      }
+    }
+  }
+  getForStatus_1: {
+    parameters: {
+      path: {
+        orderType: string
+        statusCode: string
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseSetOrderStatusGraphAxis']
         }
       }
     }
@@ -453,7 +1504,22 @@ export interface operations {
       }
     }
   }
+  all_1: {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseListJCompany']
+        }
+      }
+    }
+  }
   instance: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
@@ -463,10 +1529,11 @@ export interface operations {
       }
     }
   }
-  founder: {
+  requisite: {
     parameters: {
       path: {
-        id: number
+        companyId: number
+        reqId: number
       }
     }
     responses: {
@@ -478,20 +1545,91 @@ export interface operations {
       }
     }
   }
-  fullInstance: {
+  founderDelete: {
+    parameters: {
+      path: {
+        companyId: number
+        reqId: number
+      }
+    }
     responses: {
       /** OK */
       200: {
         content: {
-          '*/*': components['schemas']['ServerResponseCompanyInstance']
+          '*/*': components['schemas']['ServerResponseUnit']
         }
       }
     }
   }
-  founder_1: {
+  getDocuments: {
     parameters: {
       path: {
-        id: number
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseListOrderDocumentsResponse']
+        }
+      }
+    }
+  }
+  getOrder: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseFrameOrderResponse']
+        }
+      }
+    }
+  }
+  getOrder_1: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseFrameOrderResponse']
+        }
+      }
+    }
+  }
+  get_1: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseFactorOrderResponse']
+        }
+      }
+    }
+  }
+  founder: {
+    parameters: {
+      path: {
+        companyId: number
+        founderId: number
       }
     }
     responses: {
@@ -499,6 +1637,70 @@ export interface operations {
       200: {
         content: {
           '*/*': components['schemas']['ServerResponseJCompanyFounder']
+        }
+      }
+    }
+  }
+  founderDelete_1: {
+    parameters: {
+      path: {
+        companyId: number
+        founderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  getCompanyDocuments: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseListCompanyDocumentsResponse']
+        }
+      }
+    }
+  }
+  deleteDocument: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        docId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  deleteCompanyDocument: {
+    parameters: {
+      path: {
+        companyId: number
+        docId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
         }
       }
     }

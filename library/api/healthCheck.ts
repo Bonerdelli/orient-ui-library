@@ -5,8 +5,5 @@ export async function healthCheck(): Promise<boolean> {
   if ((result as ApiErrorResponse).error) {
     return false
   }
-  if (result.toString().toLowerCase() !== 'ok') {
-    return false
-  }
   return true
 }

@@ -1,29 +1,44 @@
+import { useTranslation } from 'react-i18next'
 import { Result, Button } from 'antd'
+
+import { composeClasses } from 'library/helpers'
+import Div from 'components/Div'
+
+import './ErrorResultView.style.less'
 
 type ErrorResultViewProps = {
   title?: string,
   message?: string,
   status?: 'error' | 'warning' | 403 | 404 | 500,
   reloadCallback?: () => void,
+  centered?: boolean
 }
 
-// FIXME: doesn't work
-
-export const ErrorResultView: React.FC<ErrorResultViewProps> = ({
-  title = 'commonErrors.dataLoadingError.title',
-  message = 'commonErrors.dataLoadingError.desc',
+const ErrorResultView: React.FC<ErrorResultViewProps> = ({
+  title = 'common.errors.dataLoadingError.title',
+  message = 'common.errors.dataLoadingError.desc',
   status = 'error',
+  centered = false,
   reloadCallback,
-}) => (
-  // TODO: translation
-  <Result
-    status={status}
-    title={title}
-    subTitle={message}
-    extra={reloadCallback && [
-      <Button key='reload' onClick={() => reloadCallback()}>
-        Перезагрузить
-      </Button>,
-    ]}
-  />
-)
+}) => {
+  const { t } = useTranslation()
+  return (
+    <Div className={composeClasses({
+      ErrorResultView: true,
+      'ErrorResultView--centered': centered,
+    })}>
+      <Result
+        status={status}
+        title={t(title)}
+        subTitle={t(message)}
+        extra={reloadCallback && [
+          <Button key='reload' onClick={() => reloadCallback()}>
+            {t('common.actions.reload.title')}
+          </Button>,
+        ]}
+      />
+    </Div>
+  )
+}
+
+export default ErrorResultView

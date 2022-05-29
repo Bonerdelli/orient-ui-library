@@ -9,7 +9,7 @@ export interface TemplateNameProps {
 
 }
 
-export const TemplateName: React.FC<TemplateNameProps> = ({}) => {
+const TemplateName: React.FC<TemplateNameProps> = ({}) => {
   const { t } = useTranslation()
   return (
     <div className="TemplateName" data-testid="TemplateName">
@@ -17,3 +17,5 @@ export const TemplateName: React.FC<TemplateNameProps> = ({}) => {
     </div>
   )
 }
+
+export default TemplateName
