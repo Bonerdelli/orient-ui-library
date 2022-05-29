@@ -1,4 +1,4 @@
-import { User } from 'orient-ui-library'
+import { User } from 'library/models'
 
 const mockData: User = {
   login: 'admin',

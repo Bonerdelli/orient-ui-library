@@ -6,6 +6,12 @@ Shared UI components and helpers library for front-end projects
 
 1. Install dependencies using `yarn install`
 
+1. Link React and React DOM modules from links made in your project folder using:
+```
+npm link react
+npm link react-dom
+```
+
 1. Make a link to use this library in your local projects `yarn link`
 
 1. Make a commit. Code linter and prettier will be runs automatically

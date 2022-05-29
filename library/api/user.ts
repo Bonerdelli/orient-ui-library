@@ -1,4 +1,5 @@
-import { User, ApiErrorResponse /* , get */ } from 'library/helpers/api'
+import { ApiErrorResponse /* , get */ } from 'library/helpers/api'
+import { User } from 'library/models'
 
 import mockData from 'library/mock/user'
 
