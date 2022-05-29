@@ -1,15 +1,15 @@
 /**
- * Helpers to handle API queries
+ * API integration functions and helpers
  *
  * @author Nekrasov Andrew <bonerdelli@gmail.com>
  * @package orient-ui
  */
 
-import request, { Response } from 'superagent'
+import axios from 'axios'
+import { Middleware } from 'redux'
 
 export const API_URL = process.env.API_URL || 'http://localhost:3001'
 export const REQUEST_TIMEOUT = 5000 // in milliseconds
-export const REQUEST_MAX_TIME = 20000 // in milliseconds
 
 export interface ApiError {
   code?: string
@@ -17,6 +17,7 @@ export interface ApiError {
   message: string
 }
 
+// TODO: use API error schema or remove
 export interface ApiErrorResponse {
   statusCode?: number
   error: ApiError
@@ -28,34 +29,20 @@ export interface ApiSuccessResponse {
 
 export type ApiCrudResponse<T = ApiSuccessResponse> = T | ApiErrorResponse
 
+axios.defaults.timeout = REQUEST_TIMEOUT
+
 /**
- * Fetch and parse JSON file
+ * Redux Middleware to set-up authorization header
  */
-export async function getJson<T>(
-  path: string,
-  onError?: (error?: ApiError) => void,
-): Promise<T | ApiErrorResponse> {
-  let serverError: ApiErrorResponse | null = null
-  const response = await request
-    .get(path)
-    .timeout({
-      response: REQUEST_TIMEOUT,
-      deadline: REQUEST_MAX_TIME,
-    })
-    .type('json')
-    .accept('json')
-    .catch((err) => {
-      serverError = handleApiError(err, onError)
-    })
-  if (serverError) {
-    return serverError
-  }
-  const result = (response as Response)?.body
-  if (result?.error) {
-    return handleApiError(result.error, onError)
-  }
-  return result
+function createAuthMiddleware(): Middleware {
+  return ({ getState }) => next => action => {
+    const { token } = getState().currentAuth
+    axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : false
+    return next(action)
+  };
 }
+
+export const axiosMiddleware = createAuthMiddleware()
 
 /**
  * Fetch and parse JSON from backend
@@ -64,130 +51,47 @@ export async function get<T>(
   path: string,
   onError?: (error?: ApiError) => void,
 ): Promise<T | ApiErrorResponse> {
-  let serverError: ApiErrorResponse | null = null
-  const url = getEndpointUrl(path)
-  const jwtToken = '' // TODO: read from store?
-  const response = await request
-    .get(url)
-    .timeout({
-      response: REQUEST_TIMEOUT,
-      deadline: REQUEST_MAX_TIME,
-    })
-    .type('json')
-    .accept('json')
-    .set('Authorization', `Bearer ${jwtToken}`)
-    .catch((err) => {
-      serverError = handleApiError(err, onError)
-    })
-  if (serverError) {
-    return serverError
+  try {
+    const url = getEndpointUrl(path)
+     const response = await axios.get(url)
+     return response.data
+  } catch (err: any) {
+    return handleApiError(err, onError)
   }
-  const result = (response as Response)?.body
-  if (result?.error) {
-    return handleApiError(result.error, onError)
-  }
-  return result
 }
 
 /**
  * POST request
  */
-export async function post<T = void>(
+export async function post<T, P = any>(
   path: string,
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  payload: any,
+  payload: P,
   onError?: (error?: ApiError) => void,
 ): Promise<ApiCrudResponse<T>> {
-  let serverError: ApiErrorResponse | null = null
-  const url = getEndpointUrl(path)
-  const jwtToken = '' // TODO: read from store?
-  const response = await request
-    .post(url)
-    .timeout({
-      response: REQUEST_TIMEOUT,
-      deadline: REQUEST_MAX_TIME,
-    })
-    .type('json')
-    .accept('json')
-    .set('Authorization', `Bearer ${jwtToken}`)
-    .send(payload)
-    .catch((err) => {
-      serverError = handleApiError(err, onError)
-    })
-  if (serverError) {
-    return serverError
+  try {
+    const url = getEndpointUrl(path)
+     const response = await axios.post(url, payload)
+     return response.data
+  } catch (err: any) {
+    return handleApiError(err, onError)
   }
-  const result = (response as Response)?.body
-  if (result?.error) {
-    return handleApiError(result.error, onError)
-  }
-  return result
-}
-
-/**
- * PUT request
- */
-export async function put<T = void>(
-  path: string,
-  payload?: any,
-  onError?: (error?: ApiError) => void,
-): Promise<ApiCrudResponse<T>> {
-  let serverError: ApiErrorResponse | null = null
-  const url = getEndpointUrl(path)
-  const jwtToken = '' // TODO: read from store?
-  const response = await request
-    .put(url)
-    .timeout({
-      response: REQUEST_TIMEOUT,
-      deadline: REQUEST_MAX_TIME,
-    })
-    .type('json')
-    .accept('json')
-    .set('Authorization', `Bearer ${jwtToken}`)
-    .send(payload)
-    .catch((err) => {
-      serverError = handleApiError(err, onError)
-    })
-  if (serverError) {
-    return serverError
-  }
-  const result = (response as Response)?.body
-  if (result?.error) {
-    return handleApiError(result.error, onError)
-  }
-  return result
 }
 
 /**
  * DELETE request
  */
-export async function del<T = void>(
+export async function del(
   path: string,
   onError?: (error?: ApiError) => void,
-): Promise<ApiCrudResponse<T>> {
-  let serverError: ApiErrorResponse | null = null
-  const url = getEndpointUrl(path)
-  const jwtToken = '' // TODO: read from store?
-  const response = await request
-    .delete(url)
-    .timeout({
-      response: REQUEST_TIMEOUT,
-      deadline: REQUEST_MAX_TIME,
-    })
-    .type('json')
-    .accept('json')
-    .set('Authorization', `Bearer ${jwtToken}`)
-    .catch((err) => {
-      serverError = handleApiError(err, onError)
-    })
-  if (serverError) {
-    return serverError
+): Promise<boolean> {
+  try {
+    const url = getEndpointUrl(path)
+    await axios.delete(url)
+    return true
+  } catch (err: any) {
+    handleApiError(err, onError)
   }
-  const result = (response as Response)?.body
-  if (result?.error) {
-    return handleApiError(result.error, onError)
-  }
-  return result
+  return false
 }
 
 /**
@@ -226,13 +130,12 @@ function handleApiError(
   if (onError) {
     onError(error)
   } else {
-    // TODO: add displaying of error messages using Snackbar
     console.error('API Error', error?.message) // eslint-disable-line no-console
   }
   if (error) {
     return { error }
   }
   return {
-    error: { message: 'Неизвестная ошибка' },
+    error: { message: 'Unknown API error' },
   }
 }
