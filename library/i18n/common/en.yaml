@@ -30,6 +30,14 @@ actions:
     title: Refresh
   reload:
     title: Reload
+  save:
+    title: Save
+  apply:
+    title: Apply
+  cancel:
+    title: Cancel
+  close:
+    title: Close
 
 errors:
   startupError:

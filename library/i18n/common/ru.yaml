@@ -30,6 +30,14 @@ actions:
     title: Обновить
   reload:
     title: Перезагрузить
+  save:
+    title: Сохранить
+  apply:
+    title: Применить
+  cancel:
+    title: Отменить
+  close:
+    title: Закрыть
 
 errors:
   startupError:
