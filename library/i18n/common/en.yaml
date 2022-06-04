@@ -45,6 +45,9 @@ errors:
   dataLoadingError:
     title: Data loading error
     desc: An error occurred while loading data. Try to refresh the page
+  requestError:
+    title: Request execution error
+    desc: An error occurred while executing the request on the server
   apiUnavailable:
     title: Server is not available
     desc: There is no connection to the server. Check Internet connection
