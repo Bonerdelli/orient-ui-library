@@ -17,8 +17,8 @@
     "lint:fix": "eslint . -f table --fix --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "pre-commit": "npm run lint:fix && npm run prettier:fix",
-    "post-install": "npm link react && npm link react-dom && npm link react-i18next && npm link redux",
+    "precommit": "npm run lint:fix && npm run prettier:fix",
+    "postinstall": "npm link react && npm link react-dom && npm link react-i18next && npm link redux",
     "prepare": "husky install",
     "tsc": "tsc"
   },
