@@ -6,6 +6,6 @@
  */
 export const composeClasses = (classConditionsMap: Record<string, boolean>) =>
   Object.entries(classConditionsMap)
-    .filter(([_className, condition]) => condition)
+    .filter(([_, condition]) => condition)
     .map(([className]) => className)
     .join(' ')
