@@ -60,6 +60,8 @@ companyContact:
       title: Primary Phone
     additionalPhone:
       title: Additional Phone
+    site:
+      title: Web-сайт
 
 companyFounder:
   title: Company Founder
