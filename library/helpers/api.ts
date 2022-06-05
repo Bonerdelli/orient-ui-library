@@ -57,8 +57,8 @@ export async function get<T>(
 ): Promise<T | ApiErrorResponse> {
   try {
     const url = getEndpointUrl(path)
-     const response = await axios.get(url)
-     return response.data
+    const response = await axios.get(url)
+    return response.data
   } catch (err: any) {
     return handleApiError(err, onError)
   }
@@ -74,8 +74,8 @@ export async function post<T, P = any>(
 ): Promise<ApiCrudResponse<T>> {
   try {
     const url = getEndpointUrl(path)
-     const response = await axios.post(url, payload)
-     return response.data
+    const response = await axios.post(url, payload)
+    return response.data
   } catch (err: any) {
     return handleApiError(err, onError)
   }

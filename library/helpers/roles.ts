@@ -8,5 +8,5 @@ export const hasAccess = (
   accessRoles: UserRoles = undefined,
 ) => {
   if (!accessRoles || !accessRoles.length) return true
-  return userRoles.some((role) => accessRoles.includes(role))
+  return userRoles.some(role => accessRoles.includes(role))
 }
