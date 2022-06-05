@@ -60,6 +60,8 @@ companyContact:
       title: Рабочий телефон
     additionalPhone:
       title: Дополнительный телефон
+    site:
+      title: Web-сайт
 
 companyFounder:
   title: Основатель компании

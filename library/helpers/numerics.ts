@@ -25,7 +25,7 @@ export const formatNumber = (
   padFractionPart = false,
 ) => {
   if (typeof fractionDigits === 'undefined') {
-    fractionDigits = value.toString().split('.')[1].length
+    fractionDigits = value.toString().split('.')[1]?.length ?? 0
   }
   return new Intl.NumberFormat('ru-RU', {
     minimumFractionDigits: padFractionPart ? fractionDigits : 0,

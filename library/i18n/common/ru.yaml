@@ -30,6 +30,14 @@ actions:
     title: Обновить
   reload:
     title: Перезагрузить
+  save:
+    title: Сохранить
+  apply:
+    title: Применить
+  cancel:
+    title: Отменить
+  close:
+    title: Закрыть
 
 errors:
   startupError:
@@ -37,6 +45,9 @@ errors:
   dataLoadingError:
     title: Ошибка загрузки данных
     desc: Во время загрузки данных произошла ошибка. Попробуйте обновить страницу
+  requestError:
+    title: Ошибка выполнения запроса
+    desc: Произошла ошибка при выполнении запроса на сервере
   apiUnavailable:
     title: Сервер недоступен
     desc: Нет подключения к серверу. Проверьте Интернет-соединение

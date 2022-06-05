@@ -32,4 +32,4 @@ Check the code style. Use the `yarn prettier:fix` command to fix code style auto
 
 - UI Framework: [And Design](https://ant.design)
 - Code purity: [ESLint](https://eslint.org/) and [prettier](https://prettier.io/)
-- Helper libs: [dayjs](https://day.js.org/), [superagent](https://github.com/visionmedia/superagent)
+- Helper libs: [dayjs](https://day.js.org/), [axios](https://github.com/axios/axios)
