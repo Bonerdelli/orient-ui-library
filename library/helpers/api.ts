@@ -14,25 +14,21 @@ export const API_URL = process.env.API_PROXIED_PATH
 
 export const REQUEST_TIMEOUT = 5000 // in milliseconds
 
-export interface ApiError {
-  code?: string
-  status?: number
-  message: string
-}
-
-// TODO: use API error schema or remove
-export interface ApiErrorResponse {
-  statusCode?: number
-  error: ApiError
-}
-
-export interface ApiSuccessResponse {
-  success?: boolean
-}
-
-export type ApiCrudResponse<T = ApiSuccessResponse> = T | ApiErrorResponse
-
 axios.defaults.timeout = REQUEST_TIMEOUT
+
+export interface ApiErrorResponse {
+  status?: number
+  error: string
+  message?: string
+  path?: string
+}
+
+export interface ApiSuccessResponse<T = unknown> {
+  success?: boolean
+  data?: T
+}
+
+export type ApiResponse<T = unknown> = ApiSuccessResponse<T> | ApiErrorResponse
 
 /**
  * Redux Middleware to set-up authorization header
@@ -53,7 +49,7 @@ export const axiosMiddleware = createAuthMiddleware()
  */
 export async function get<T>(
   path: string,
-  onError?: (error?: ApiError) => void,
+  onError?: (error?: ApiErrorResponse) => void,
 ): Promise<T | ApiErrorResponse> {
   try {
     const url = getEndpointUrl(path)
@@ -70,8 +66,8 @@ export async function get<T>(
 export async function post<T, P = any>(
   path: string,
   payload: P,
-  onError?: (error?: ApiError) => void,
-): Promise<ApiCrudResponse<T>> {
+  onError?: (error?: ApiErrorResponse) => void,
+): Promise<ApiResponse<T>> {
   try {
     const url = getEndpointUrl(path)
     const response = await axios.post(url, payload)
@@ -86,7 +82,7 @@ export async function post<T, P = any>(
  */
 export async function del(
   path: string,
-  onError?: (error?: ApiError) => void,
+  onError?: (error?: ApiErrorResponse) => void,
 ): Promise<boolean> {
   try {
     const url = getEndpointUrl(path)
@@ -102,18 +98,12 @@ export async function del(
  * Helper function to check if request was successful
  */
 export function isSuccessful<T = void>(
-  result: ApiCrudResponse<T | ApiSuccessResponse>,
+  result: ApiSuccessResponse<T>,
 ): boolean {
   if (typeof result === 'undefined') {
     return false
   }
-  if ((result as ApiErrorResponse).error) {
-    return false
-  }
-  if ((result as ApiSuccessResponse).success) {
-    return true
-  }
-  return true
+  return (result as ApiSuccessResponse)?.success ?? false
 }
 
 /**
@@ -128,8 +118,8 @@ export function getEndpointUrl(path: string): string {
  * Helper function to handle API errors
  */
 function handleApiError(
-  error?: ApiError,
-  onError?: (error?: ApiError) => void,
+  error?: ApiErrorResponse,
+  onError?: (error?: ApiErrorResponse) => void,
 ): ApiErrorResponse {
   if (onError) {
     onError(error)
@@ -137,9 +127,9 @@ function handleApiError(
     console.error('API Error', error?.message) // eslint-disable-line no-console
   }
   if (error) {
-    return { error }
+    return { ...error }
   }
   return {
-    error: { message: 'Unknown API error' },
+    error: 'Unknown API error' ,
   }
 }
