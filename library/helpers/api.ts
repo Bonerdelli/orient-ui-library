@@ -5,7 +5,7 @@
  * @package orient-ui
  */
 
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { Middleware } from 'redux'
 
 export const API_URL = process.env.API_PROXIED_PATH
@@ -17,6 +17,7 @@ export const REQUEST_TIMEOUT = 5000 // in milliseconds
 axios.defaults.timeout = REQUEST_TIMEOUT
 
 export interface ApiErrorResponse {
+  success?: false
   status?: number
   error: string
   message?: string
@@ -118,18 +119,20 @@ export function getEndpointUrl(path: string): string {
  * Helper function to handle API errors
  */
 function handleApiError(
-  error?: ApiErrorResponse,
+  error?: AxiosError<ApiErrorResponse>,
   onError?: (error?: ApiErrorResponse) => void,
 ): ApiErrorResponse {
+  const errorResponse = error?.response?.data
   if (onError) {
-    onError(error)
+    onError(errorResponse)
   } else {
     console.error('API Error', error?.message) // eslint-disable-line no-console
   }
-  if (error) {
-    return { ...error }
+  if (errorResponse) {
+    return { ...errorResponse }
   }
   return {
+    status: error?.response?.status,
     error: 'Unknown API error' ,
   }
 }
