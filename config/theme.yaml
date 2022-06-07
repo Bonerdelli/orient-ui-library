@@ -4,14 +4,13 @@
 ###
 
 layout-header-color: '#ffffff' # Header text color
-layout-header-background: '#1da57a'
-# layout-header-background: '#375aa0' # ORIENT brand color
+layout-header-background: '#375aa0'
 layout-header-height: 48px
 
 ###
 # Project-specific theme variables, used both in styles and components
 ###
 
-primary-color: '#1da57a'
+primary-color: '#375aa0'
 side-navigation-width: 260 # NOTE: default is 200 # TODO: universalize optionCase and units
 side-navigation-collapsed-width: 60 # NOTE: default is 80
