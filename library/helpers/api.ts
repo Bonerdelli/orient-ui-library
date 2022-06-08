@@ -51,7 +51,7 @@ export const axiosMiddleware = createAuthMiddleware()
 export async function get<T>(
   path: string,
   onError?: (error?: ApiErrorResponse) => void,
-): Promise<T | ApiErrorResponse> {
+): Promise<ApiResponse<T>> {
   try {
     const url = getEndpointUrl(path)
     const response = await axios.get(url)
