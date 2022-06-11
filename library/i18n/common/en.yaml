@@ -43,6 +43,19 @@ actions:
   forward:
     title: Forward
 
+documents:
+  actions:
+    upload:
+      title: Upload
+    download:
+      title: Download
+  statuses:
+    uploaded: Uploaded
+    notUploaded: Not Uploaded
+    uploadingError: Uploading Error
+    signed: Signed
+    unsigned: Unsigned
+
 errors:
   startupError:
     title: Application initialization error

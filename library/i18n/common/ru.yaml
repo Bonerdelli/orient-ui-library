@@ -43,6 +43,19 @@ actions:
   forward:
     title: Вперёд
 
+documents:
+  actions:
+    upload:
+      title: Загрузить
+    download:
+      title: Скачать
+  statuses:
+    uploaded: Загружен
+    notUploaded: Не загружен
+    uploadingError: Ошибка загрузки
+    signed: Подписан
+    unsigned: Не подписан
+
 errors:
   startupError:
     title: Ошибка инициализации приложения
