@@ -38,6 +38,10 @@ actions:
     title: Cancel
   close:
     title: Close
+  back:
+    title: Back
+  forward:
+    title: Forward
 
 errors:
   startupError:
@@ -57,3 +61,7 @@ errors:
   authError:
     title: Authentication error
     desc: Check are login and password entered correctly
+  pageNotFound:
+    title: 404
+    desc: Page not found
+    action: Go to main page

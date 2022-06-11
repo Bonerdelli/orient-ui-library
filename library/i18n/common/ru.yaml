@@ -38,6 +38,10 @@ actions:
     title: Отменить
   close:
     title: Закрыть
+  back:
+    title: Назад
+  forward:
+    title: Вперёд
 
 errors:
   startupError:
@@ -57,3 +61,7 @@ errors:
   authError:
     title: Ошибка аутентификации
     desc: Проверьте правильность ввода логина и пароля
+  pageNotFound:
+    title: 404
+    desc: Запрашиваемая страница не найдена
+    action: На главную
