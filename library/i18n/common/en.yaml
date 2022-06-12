@@ -7,6 +7,8 @@ user:
       title: Logout
 
 forms:
+  numericInput:
+    placeholder: Input a number
   authenticate:
     login:
       label: Login
@@ -26,6 +28,8 @@ actions:
     title: Edit
   delete:
     title: Delete
+    confirmOne: Are you sure you want to delete the selected entry?
+    confirmFew: Are you sure you want to delete selected entries?
   refresh:
     title: Refresh
   reload:

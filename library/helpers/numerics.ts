@@ -27,7 +27,7 @@ export const formatNumber = (
   if (typeof fractionDigits === 'undefined') {
     fractionDigits = value.toString().split('.')[1]?.length ?? 0
   }
-  return new Intl.NumberFormat('ru-RU', {
+  return new Intl.NumberFormat('ru-RU', { // TODO: support current locale
     minimumFractionDigits: padFractionPart ? fractionDigits : 0,
     maximumFractionDigits: fractionDigits,
   }).format(value)
