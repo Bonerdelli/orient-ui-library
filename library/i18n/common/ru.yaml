@@ -7,6 +7,8 @@ user:
       title: Выйти
 
 forms:
+  select:
+    placeholder: Выберите значение
   numericInput:
     placeholder: Введите число
   authenticate:

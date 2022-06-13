@@ -7,6 +7,8 @@ user:
       title: Logout
 
 forms:
+  select:
+    placeholder: Select an option
   numericInput:
     placeholder: Input a number
   authenticate:
