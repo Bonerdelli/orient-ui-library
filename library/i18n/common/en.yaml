@@ -9,6 +9,7 @@ user:
 forms:
   select:
     placeholder: Select an option
+    noData: No data
   numericInput:
     placeholder: Input a number
   authenticate:

@@ -9,6 +9,7 @@ user:
 forms:
   select:
     placeholder: Выберите значение
+    noData: Не найдено
   numericInput:
     placeholder: Введите число
   authenticate:
