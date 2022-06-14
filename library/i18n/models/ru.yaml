@@ -10,6 +10,20 @@ common:
   updatedAt:
     title: Дата обновления
 
+customer:
+  title: Заказчик
+  fields:
+    inn:
+      title: Инн
+    shortName:
+      title: Наименование юр. лица
+    chief:
+      title: Руководитель
+    soato:
+      title: СОАТО
+    address:
+      title: Адрес
+
 company:
   title: Компания
   fields:

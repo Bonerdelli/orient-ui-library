@@ -10,6 +10,20 @@ common:
   updatedAt:
     title: Date Updated
 
+customer:
+  title: customer
+  fields:
+    inn:
+      title: INN
+    shortName:
+      title: Legal Entity Name
+    chief:
+      title: Head of company
+    soato:
+      title: SOATO Code
+    address:
+      title: Address
+
 company:
   title: Company
   fields:
