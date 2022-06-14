@@ -141,7 +141,7 @@ order:
     clientName:
       title: Наименование юр. лица Клиента
     updatedAt:
-      title: Дата и время создания модификации
+      title: Дата и время модификации
     createdAt:
       title: Дата и время создания заявки
     statusCode:

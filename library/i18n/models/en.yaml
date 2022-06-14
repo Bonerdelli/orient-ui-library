@@ -131,7 +131,6 @@ companyRequisites:
     accountNumber:
       title: Account Number
 
-
 order:
   title: Order
   fields:
