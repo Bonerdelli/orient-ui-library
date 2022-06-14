@@ -130,3 +130,29 @@ companyRequisites:
       title: МФО
     accountNumber:
       title: Номер счёта
+
+order:
+  title: Заявка
+  fields:
+    id:
+      title: Номер заявки
+    clientInn:
+      title: ИНН Клиента
+    clientName:
+      title: Наименование юр. лица Клиента
+    updatedAt:
+      title: Дата и время создания модификации
+    createdAt:
+      title: Дата и время создания заявки
+    statusCode:
+      title: Код статуса
+    statusName:
+      title: Статус
+    amount:
+      title: Сумма
+    currencyCode:
+      title: Код валюты
+    currencyName:
+      title: Названик валюты
+    typeCode:
+      title: Вид заявки

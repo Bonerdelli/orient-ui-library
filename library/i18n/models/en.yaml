@@ -130,3 +130,30 @@ companyRequisites:
       title: MFO
     accountNumber:
       title: Account Number
+
+
+order:
+  title: Order
+  fields:
+    id:
+      title: Order Num
+    clientInn:
+      title: Client INN
+    clientName:
+      title: Client Name
+    updatedAt:
+      title: Updated
+    createdAt:
+      title: Created
+    statusCode:
+      title: Status Code
+    statusName:
+      title: Status Name
+    amount:
+      title: Amount
+    currencyCode:
+      title: Currency Code
+    currencyName:
+      title: Currency Name
+    typeCode:
+      title: Type Code
