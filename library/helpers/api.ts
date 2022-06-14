@@ -38,7 +38,7 @@ function createAuthMiddleware(): Middleware {
   return ({ getState }) => next => action => {
     const { user } = getState()
     const token = user?.currentAuth?.accessToken ?? false
-    axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : false
+    axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : ''
     return next(action)
   };
 }
