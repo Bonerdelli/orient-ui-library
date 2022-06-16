@@ -51,6 +51,11 @@ actions:
     title: Вперёд
 
 documents:
+  fields:
+    type:
+      title: Наименование документа
+    status:
+      title: Статус документа
   actions:
     upload:
       title: Загрузить
@@ -62,6 +67,11 @@ documents:
     uploadingError: Ошибка загрузки
     signed: Подписан
     unsigned: Не подписан
+  statusMessages:
+    uploaded: Файл «{{name}}» успешно загружен
+    uploadingError: Ошибка загрузки файла «{{name}}»
+    downloadingError: Ошибка скачивания файла
+    deletingError: Ошибка удаления файла
 
 errors:
   startupError:

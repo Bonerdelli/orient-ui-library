@@ -133,6 +133,13 @@ companyRequisites:
 
 order:
   title: Заявка
+  types:
+    frameOrder:
+      title: Заявка на рамочный договор
+    frameSimpleOrder:
+      title: Заявка на упрощенный рамочный договор
+    factoring:
+      title: Заявка на факторинг
   fields:
     id:
       title: Номер заявки

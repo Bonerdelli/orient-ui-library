@@ -51,6 +51,11 @@ actions:
     title: Forward
 
 documents:
+  fields:
+    type:
+      title: Document name
+    status:
+      title: Status
   actions:
     upload:
       title: Upload
@@ -62,6 +67,11 @@ documents:
     uploadingError: Uploading Error
     signed: Signed
     unsigned: Unsigned
+  statusMessages:
+    uploaded: File "{{name}}" uploaded successfully
+    uploadingError: Error loading file "{{name}}"
+    downloadingError: File download error
+    deletingError: File deletion error
 
 errors:
   startupError:

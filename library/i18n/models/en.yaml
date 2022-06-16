@@ -132,10 +132,17 @@ companyRequisites:
       title: Account Number
 
 order:
-  title: Order
+  title: Application
+  types:
+    frameOrder:
+      title: Application for a Framework Contract
+    frameSimpleOrder:
+      title: Application for a Simplified Framework Contract
+    factoring:
+      title: Factoring Application
   fields:
     id:
-      title: Order Num
+      title: Application Num
     clientInn:
       title: Client INN
     clientName:
