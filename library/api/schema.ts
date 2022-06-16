@@ -7,6 +7,9 @@ export interface paths {
   '/operator/wizard/frameSimple/{orderId}/reject': {
     post: operations['reject']
   }
+  '/operator/wizard/frameSimple/{orderId}/docStatus': {
+    post: operations['changeDocStatus']
+  }
   '/operator/wizard/frameSimple/{orderId}/3': {
     post: operations['postStep3']
   }
@@ -19,6 +22,9 @@ export interface paths {
   '/operator/wizard/frame/{orderId}/reject': {
     post: operations['reject_1']
   }
+  '/operator/wizard/frame/{orderId}/docStatus': {
+    post: operations['changeDocStatus_1']
+  }
   '/operator/wizard/frame/{orderId}/4': {
     post: operations['postStep3_1']
   }
@@ -30,6 +36,24 @@ export interface paths {
   }
   '/operator/wizard/frame/{orderId}/1': {
     post: operations['postStep1_1']
+  }
+  '/operator/wizard/factor/{orderId}/reject': {
+    post: operations['reject_2']
+  }
+  '/operator/wizard/factor/{orderId}/docStatus': {
+    post: operations['changeDocStatus_2']
+  }
+  '/operator/wizard/factor/{orderId}/4': {
+    post: operations['postStep3_3']
+  }
+  '/operator/wizard/factor/{orderId}/3': {
+    post: operations['postStep3_4']
+  }
+  '/operator/wizard/factor/{orderId}/2': {
+    post: operations['postStep2_2']
+  }
+  '/operator/wizard/factor/{orderId}/1': {
+    post: operations['postStep1_2']
   }
   '/operator/rejectReason/list': {
     post: operations['list']
@@ -54,16 +78,20 @@ export interface paths {
     post: operations['getBanks']
   }
   '/customer/company/{companyId}/wizard/frameSimple/{orderId}/2': {
-    post: operations['postStep2_2']
-  }
-  '/customer/company/{companyId}/wizard/frameSimple/{orderId}/1': {
-    post: operations['postStep1_2']
-  }
-  '/customer/company/{companyId}/wizard/frame/{orderId}/2': {
     post: operations['postStep2_3']
   }
-  '/customer/company/{companyId}/wizard/frame/{orderId}/1': {
+  '/customer/company/{companyId}/wizard/frameSimple/{orderId}/1': {
     post: operations['postStep1_3']
+  }
+  '/customer/company/{companyId}/wizard/frame/{orderId}/2': {
+    post: operations['postStep2_4']
+  }
+  '/customer/company/{companyId}/wizard/frame/{orderId}/1': {
+    post: operations['postStep1_4']
+  }
+  '/customer/company/{companyId}/wizard/factor/{orderId}/{step}': {
+    get: operations['getStep_11']
+    post: operations['reject_3']
   }
   '/customer/company/{companyId}/questionnaire': {
     get: operations['getQuest']
@@ -97,10 +125,10 @@ export interface paths {
     post: operations['cancel']
   }
   '/client/company/{companyId}/wizard/frameSimple/{orderId}/3': {
-    post: operations['postStep3_3']
+    post: operations['postStep3_5']
   }
   '/client/company/{companyId}/wizard/frameSimple/{orderId}/2': {
-    post: operations['postStep2_4']
+    post: operations['postStep2_5']
   }
   '/client/company/{companyId}/wizard/frame/{orderId}/upload/{typeId}': {
     post: operations['uploadFile_1']
@@ -115,10 +143,25 @@ export interface paths {
     post: operations['cancel_1']
   }
   '/client/company/{companyId}/wizard/frame/{orderId}/3': {
-    post: operations['postStep3_4']
+    post: operations['postStep3_6']
   }
   '/client/company/{companyId}/wizard/frame/{orderId}/2': {
-    post: operations['postStep2_5']
+    post: operations['postStep2_6']
+  }
+  '/client/company/{companyId}/wizard/factor': {
+    post: operations['postNew_2']
+  }
+  '/client/company/{companyId}/wizard/factor/{orderId}/upload/{typeId}': {
+    post: operations['uploadFile_2']
+  }
+  '/client/company/{companyId}/wizard/factor/{orderId}/cancel': {
+    post: operations['cancel_2']
+  }
+  '/client/company/{companyId}/wizard/factor/{orderId}/3': {
+    post: operations['post3To4']
+  }
+  '/client/company/{companyId}/wizard/factor/{orderId}/2': {
+    post: operations['post2To3']
   }
   '/client/company/{companyId}/shortName': {
     post: operations['patchShortName']
@@ -132,7 +175,7 @@ export interface paths {
     post: operations['saveQuest_1']
   }
   '/client/company/{companyId}/order/{orderId}/document/upload/{typeId}': {
-    post: operations['uploadFile_2']
+    post: operations['uploadFile_3']
   }
   '/client/company/{companyId}/order/{orderId}/document/attach': {
     post: operations['attach']
@@ -145,6 +188,9 @@ export interface paths {
   }
   '/client/company/{companyId}/order/list': {
     post: operations['getOrders_1']
+  }
+  '/client/company/{companyId}/offer/readyToFactor/list': {
+    post: operations['getOrdersCompleted_1']
   }
   '/client/company/{companyId}/offer/list': {
     post: operations['getOrders_2']
@@ -165,28 +211,35 @@ export interface paths {
     post: operations['update_1']
   }
   '/bank/{bankId}/wizard/frameSimple/{orderId}/reject': {
-    post: operations['reject_2']
+    post: operations['reject_4']
   }
   '/bank/{bankId}/wizard/frameSimple/{orderId}/2': {
-    post: operations['postStep2_6']
+    post: operations['postStep2_7']
   }
   '/bank/{bankId}/wizard/frameSimple/{orderId}/1': {
-    post: operations['postStep1_4']
+    post: operations['postStep1_5']
   }
   '/bank/{bankId}/wizard/frame/{orderId}/reject': {
-    post: operations['reject_3']
+    post: operations['reject_5']
   }
   '/bank/{bankId}/wizard/frame/{orderId}/4': {
     post: operations['postStep4']
   }
   '/bank/{bankId}/wizard/frame/{orderId}/3': {
-    post: operations['postStep3_5']
+    post: operations['postStep3_7']
   }
   '/bank/{bankId}/wizard/frame/{orderId}/2': {
-    post: operations['postStep2_7']
+    post: operations['postStep2_8']
   }
   '/bank/{bankId}/wizard/frame/{orderId}/1': {
-    post: operations['postStep1_5']
+    post: operations['postStep1_6']
+  }
+  '/bank/{bankId}/wizard/factor/{orderId}/{step}': {
+    get: operations['getStep_23']
+    post: operations['reject_6']
+  }
+  '/bank/{bankId}/wizard/factor/{orderId}/reject': {
+    post: operations['reject_7']
   }
   '/bank/{bankId}/rejectReason/list': {
     post: operations['list_1']
@@ -221,6 +274,12 @@ export interface paths {
   '/operator/wizard/frame/{orderId}/{step}': {
     get: operations['getStep_3']
   }
+  '/operator/wizard/factor/{orderId}': {
+    get: operations['getStep_4']
+  }
+  '/operator/wizard/factor/{orderId}/{step}': {
+    get: operations['getStep_5']
+  }
   '/operator/order/graph/{orderType}': {
     get: operations['getForStatus']
   }
@@ -234,16 +293,19 @@ export interface paths {
     get: operations['all']
   }
   '/customer/company/{companyId}/wizard/frameSimple/{orderId}': {
-    get: operations['getStep_4']
-  }
-  '/customer/company/{companyId}/wizard/frameSimple/{orderId}/{step}': {
-    get: operations['getStep_5']
-  }
-  '/customer/company/{companyId}/wizard/frame/{orderId}': {
     get: operations['getStep_6']
   }
-  '/customer/company/{companyId}/wizard/frame/{orderId}/{step}': {
+  '/customer/company/{companyId}/wizard/frameSimple/{orderId}/{step}': {
     get: operations['getStep_7']
+  }
+  '/customer/company/{companyId}/wizard/frame/{orderId}': {
+    get: operations['getStep_8']
+  }
+  '/customer/company/{companyId}/wizard/frame/{orderId}/{step}': {
+    get: operations['getStep_9']
+  }
+  '/customer/company/{companyId}/wizard/factor/{orderId}': {
+    get: operations['getStep_10']
   }
   '/common': {
     get: operations['testCommon']
@@ -267,16 +329,22 @@ export interface paths {
     get: operations['instance']
   }
   '/client/company/{companyId}/wizard/frameSimple/{orderId}': {
-    get: operations['getStep_8']
+    get: operations['getStep_12']
   }
   '/client/company/{companyId}/wizard/frameSimple/{orderId}/{step}': {
-    get: operations['getStep_9']
+    get: operations['getStep_13']
   }
   '/client/company/{companyId}/wizard/frame/{orderId}': {
-    get: operations['getStep_10']
+    get: operations['getStep_14']
   }
   '/client/company/{companyId}/wizard/frame/{orderId}/{step}': {
-    get: operations['getStep_11']
+    get: operations['getStep_15']
+  }
+  '/client/company/{companyId}/wizard/factor/{orderId}': {
+    get: operations['getStep_16']
+  }
+  '/client/company/{companyId}/wizard/factor/{orderId}/{step}': {
+    get: operations['getStep_17']
   }
   '/client/company/{companyId}/requisites/{reqId}': {
     get: operations['requisite']
@@ -293,16 +361,19 @@ export interface paths {
     get: operations['getCompanyDocuments']
   }
   '/bank/{bankId}/wizard/frameSimple/{orderId}': {
-    get: operations['getStep_12']
+    get: operations['getStep_18']
   }
   '/bank/{bankId}/wizard/frameSimple/{orderId}/{step}': {
-    get: operations['getStep_13']
+    get: operations['getStep_19']
   }
   '/bank/{bankId}/wizard/frame/{orderId}': {
-    get: operations['getStep_14']
+    get: operations['getStep_20']
   }
   '/bank/{bankId}/wizard/frame/{orderId}/{step}': {
-    get: operations['getStep_15']
+    get: operations['getStep_21']
+  }
+  '/bank/{bankId}/wizard/factor/{orderId}': {
+    get: operations['getStep_22']
   }
   '/client/company/{companyId}/order/{orderId}/document/{docId}': {
     delete: operations['deleteDocument']
@@ -324,6 +395,11 @@ export interface components {
       data?: components['schemas']['Unit']
     }
     Unit: { [key: string]: unknown }
+    OrderDocumentStatusRequest: {
+      /** Format: int64 */
+      documentId: number
+      documentStatus: string
+    }
     ServerResponseWizardPostResponse: {
       success: boolean
       data?: components['schemas']['WizardPostResponse']
@@ -344,10 +420,10 @@ export interface components {
       /** Format: date */
       startDate: string
     }
-    OperatorFrameStep5ToRequest: {
+    OperatorFrameStep4ToRequest: {
       bankIds: number[]
     }
-    OperatorFrameStep3To5Request: {
+    OperatorFrameStep3To4Request: {
       stopFactors: components['schemas']['OrderStopFactorRequest'][]
     }
     OrderStopFactorRequest: {
@@ -358,10 +434,11 @@ export interface components {
     OperatorFrameStep2To3Request: {
       documentStatuses: components['schemas']['OrderDocumentStatusRequest'][]
     }
-    OrderDocumentStatusRequest: {
-      /** Format: int64 */
-      documentId: number
-      documentStatus: string
+    OperatorFactorStep3To4Request: {
+      stopFactors: components['schemas']['OrderStopFactorRequest'][]
+    }
+    OperatorFactorStep2To3Request: {
+      documentStatuses: components['schemas']['OrderDocumentStatusRequest'][]
     }
     RejectReasonGridRequest: {
       /** Format: int32 */
@@ -427,6 +504,10 @@ export interface components {
       /** Format: int32 */
       page: number
       name?: string
+    }
+    CustomerFrameStep2ToRequest: {
+      /** Format: int64 */
+      bankId: number
     }
     CompanyQuestionnaire: {
       /** Format: int64 */
@@ -504,6 +585,24 @@ export interface components {
       /** Format: int64 */
       customerId: number
     }
+    JOrderDocument: {
+      /** Format: int64 */
+      id?: number
+      /** Format: int64 */
+      typeId?: number
+      /** Format: uuid */
+      fileUuid?: string
+      status?: string
+      /** Format: int64 */
+      orderId?: number
+      clientSigned?: boolean
+      bankSigned?: boolean
+      customerSigned?: boolean
+    }
+    ServerResponseJOrderDocument: {
+      success: boolean
+      data?: components['schemas']['JOrderDocument']
+    }
     AttachRequisitesRequest: {
       /** Format: int64 */
       requisitesId: number
@@ -511,6 +610,26 @@ export interface components {
     AttachFounderRequest: {
       /** Format: int64 */
       founderId: number
+    }
+    ClientFactorStep1To2Request: {
+      /** Format: int64 */
+      orderId: number
+      /** Format: int64 */
+      bankId: number
+      amount: number
+      currencyCode: string
+      /** Format: int32 */
+      days: number
+      contractNumber?: string
+      purchaseNumber?: string
+    }
+    ClientFactorStep1To2Response: {
+      /** Format: int64 */
+      orderId: number
+    }
+    ServerResponseClientFactorStep1To2Response: {
+      success: boolean
+      data?: components['schemas']['ClientFactorStep1To2Response']
     }
     PatchShortNameDto: {
       shortName: string
@@ -534,24 +653,6 @@ export interface components {
     ServerResponseJCompanyRequisites: {
       success: boolean
       data?: components['schemas']['JCompanyRequisites']
-    }
-    JOrderDocument: {
-      /** Format: int64 */
-      id?: number
-      /** Format: int64 */
-      typeId?: number
-      /** Format: uuid */
-      fileUuid?: string
-      status?: string
-      /** Format: int64 */
-      orderId?: number
-      clientSigned?: boolean
-      bankSigned?: boolean
-      customerSigned?: boolean
-    }
-    ServerResponseJOrderDocument: {
-      success: boolean
-      data?: components['schemas']['JOrderDocument']
     }
     ServerResponseListJOrderDocument: {
       success: boolean
@@ -864,6 +965,26 @@ export interface operations {
       }
     }
   }
+  changeDocStatus: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderDocumentStatusRequest']
+      }
+    }
+  }
   postStep3: {
     parameters: {
       path: {
@@ -934,6 +1055,26 @@ export interface operations {
       }
     }
   }
+  changeDocStatus_1: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderDocumentStatusRequest']
+      }
+    }
+  }
   postStep3_1: {
     parameters: {
       path: {
@@ -950,7 +1091,7 @@ export interface operations {
     }
     requestBody: {
       content: {
-        'application/json': components['schemas']['OperatorFrameStep5ToRequest']
+        'application/json': components['schemas']['OperatorFrameStep4ToRequest']
       }
     }
   }
@@ -970,7 +1111,7 @@ export interface operations {
     }
     requestBody: {
       content: {
-        'application/json': components['schemas']['OperatorFrameStep3To5Request']
+        'application/json': components['schemas']['OperatorFrameStep3To4Request']
       }
     }
   }
@@ -995,6 +1136,116 @@ export interface operations {
     }
   }
   postStep1_1: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  reject_2: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['RejectOrderDto']
+      }
+    }
+  }
+  changeDocStatus_2: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OrderDocumentStatusRequest']
+      }
+    }
+  }
+  postStep3_3: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  postStep3_4: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OperatorFactorStep3To4Request']
+      }
+    }
+  }
+  postStep2_2: {
+    parameters: {
+      path: {
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OperatorFactorStep2To3Request']
+      }
+    }
+  }
+  postStep1_2: {
     parameters: {
       path: {
         orderId: number
@@ -1134,38 +1385,6 @@ export interface operations {
       }
     }
   }
-  postStep2_2: {
-    parameters: {
-      path: {
-        companyId: number
-        orderId: number
-      }
-    }
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          '*/*': components['schemas']['ServerResponseWizardPostResponse']
-        }
-      }
-    }
-  }
-  postStep1_2: {
-    parameters: {
-      path: {
-        companyId: number
-        orderId: number
-      }
-    }
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          '*/*': components['schemas']['ServerResponseWizardPostResponse']
-        }
-      }
-    }
-  }
   postStep2_3: {
     parameters: {
       path: {
@@ -1181,12 +1400,88 @@ export interface operations {
         }
       }
     }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CustomerFrameStep2ToRequest']
+      }
+    }
   }
   postStep1_3: {
     parameters: {
       path: {
         companyId: number
         orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  postStep2_4: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CustomerFrameStep2ToRequest']
+      }
+    }
+  }
+  postStep1_4: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  getStep_11: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  reject_3: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
       }
     }
     responses: {
@@ -1338,7 +1633,7 @@ export interface operations {
       /** OK */
       200: {
         content: {
-          '*/*': components['schemas']['ServerResponseUnit']
+          '*/*': components['schemas']['ServerResponseJOrderDocument']
         }
       }
     }
@@ -1409,7 +1704,7 @@ export interface operations {
       }
     }
   }
-  postStep3_3: {
+  postStep3_5: {
     parameters: {
       path: {
         companyId: number
@@ -1425,7 +1720,7 @@ export interface operations {
       }
     }
   }
-  postStep2_4: {
+  postStep2_5: {
     parameters: {
       path: {
         companyId: number
@@ -1453,7 +1748,7 @@ export interface operations {
       /** OK */
       200: {
         content: {
-          '*/*': components['schemas']['ServerResponseUnit']
+          '*/*': components['schemas']['ServerResponseJOrderDocument']
         }
       }
     }
@@ -1524,7 +1819,7 @@ export interface operations {
       }
     }
   }
-  postStep3_4: {
+  postStep3_6: {
     parameters: {
       path: {
         companyId: number
@@ -1540,7 +1835,100 @@ export interface operations {
       }
     }
   }
-  postStep2_5: {
+  postStep2_6: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  postNew_2: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseClientFactorStep1To2Response']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ClientFactorStep1To2Request']
+      }
+    }
+  }
+  uploadFile_2: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        typeId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseJOrderDocument']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': {
+          /** Format: binary */
+          file: string
+        }
+      }
+    }
+  }
+  cancel_2: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+  }
+  post3To4: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  post2To3: {
     parameters: {
       path: {
         companyId: number
@@ -1646,7 +2034,7 @@ export interface operations {
       }
     }
   }
-  uploadFile_2: {
+  uploadFile_3: {
     parameters: {
       path: {
         companyId: number
@@ -1741,6 +2129,26 @@ export interface operations {
     requestBody: {
       content: {
         'application/json': components['schemas']['OrderGridRequest']
+      }
+    }
+  }
+  getOrdersCompleted_1: {
+    parameters: {
+      path: {
+        companyId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseGridResponseGridRow']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OfferGridRequest']
       }
     }
   }
@@ -1893,7 +2301,7 @@ export interface operations {
       }
     }
   }
-  reject_2: {
+  reject_4: {
     parameters: {
       path: {
         bankId: number
@@ -1914,7 +2322,7 @@ export interface operations {
       }
     }
   }
-  postStep2_6: {
+  postStep2_7: {
     parameters: {
       path: {
         bankId: number
@@ -1930,7 +2338,7 @@ export interface operations {
       }
     }
   }
-  postStep1_4: {
+  postStep1_5: {
     parameters: {
       path: {
         bankId: number
@@ -1946,7 +2354,7 @@ export interface operations {
       }
     }
   }
-  reject_3: {
+  reject_5: {
     parameters: {
       path: {
         bankId: number
@@ -1983,7 +2391,7 @@ export interface operations {
       }
     }
   }
-  postStep3_5: {
+  postStep3_7: {
     parameters: {
       path: {
         bankId: number
@@ -2004,7 +2412,7 @@ export interface operations {
       }
     }
   }
-  postStep2_7: {
+  postStep2_8: {
     parameters: {
       path: {
         bankId: number
@@ -2020,7 +2428,7 @@ export interface operations {
       }
     }
   }
-  postStep1_5: {
+  postStep1_6: {
     parameters: {
       path: {
         bankId: number
@@ -2033,6 +2441,61 @@ export interface operations {
         content: {
           '*/*': components['schemas']['ServerResponseWizardPostResponse']
         }
+      }
+    }
+  }
+  getStep_23: {
+    parameters: {
+      path: {
+        bankId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  reject_6: {
+    parameters: {
+      path: {
+        bankId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardPostResponse']
+        }
+      }
+    }
+  }
+  reject_7: {
+    parameters: {
+      path: {
+        bankId: number
+        orderId: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseUnit']
+        }
+      }
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['RejectOrderDto']
       }
     }
   }
@@ -2215,6 +2678,38 @@ export interface operations {
       }
     }
   }
+  getStep_4: {
+    parameters: {
+      path: {
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_5: {
+    parameters: {
+      path: {
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
   getForStatus: {
     parameters: {
       path: {
@@ -2271,40 +2766,6 @@ export interface operations {
       }
     }
   }
-  getStep_4: {
-    parameters: {
-      path: {
-        companyId: number
-        orderId: number
-        step: number
-      }
-    }
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
-        }
-      }
-    }
-  }
-  getStep_5: {
-    parameters: {
-      path: {
-        companyId: number
-        orderId: number
-        step: number
-      }
-    }
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
-        }
-      }
-    }
-  }
   getStep_6: {
     parameters: {
       path: {
@@ -2323,6 +2784,57 @@ export interface operations {
     }
   }
   getStep_7: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_8: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_9: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_10: {
     parameters: {
       path: {
         companyId: number
@@ -2431,7 +2943,7 @@ export interface operations {
       }
     }
   }
-  getStep_8: {
+  getStep_12: {
     parameters: {
       path: {
         companyId: number
@@ -2448,7 +2960,7 @@ export interface operations {
       }
     }
   }
-  getStep_9: {
+  getStep_13: {
     parameters: {
       path: {
         companyId: number
@@ -2465,7 +2977,7 @@ export interface operations {
       }
     }
   }
-  getStep_10: {
+  getStep_14: {
     parameters: {
       path: {
         companyId: number
@@ -2482,7 +2994,41 @@ export interface operations {
       }
     }
   }
-  getStep_11: {
+  getStep_15: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_16: {
+    parameters: {
+      path: {
+        companyId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_17: {
     parameters: {
       path: {
         companyId: number
@@ -2594,7 +3140,7 @@ export interface operations {
       }
     }
   }
-  getStep_12: {
+  getStep_18: {
     parameters: {
       path: {
         bankId: number
@@ -2611,7 +3157,7 @@ export interface operations {
       }
     }
   }
-  getStep_13: {
+  getStep_19: {
     parameters: {
       path: {
         bankId: number
@@ -2628,7 +3174,7 @@ export interface operations {
       }
     }
   }
-  getStep_14: {
+  getStep_20: {
     parameters: {
       path: {
         bankId: number
@@ -2645,7 +3191,24 @@ export interface operations {
       }
     }
   }
-  getStep_15: {
+  getStep_21: {
+    parameters: {
+      path: {
+        bankId: number
+        orderId: number
+        step: number
+      }
+    }
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          '*/*': components['schemas']['ServerResponseWizardGetResponseWrapper']
+        }
+      }
+    }
+  }
+  getStep_22: {
     parameters: {
       path: {
         bankId: number
