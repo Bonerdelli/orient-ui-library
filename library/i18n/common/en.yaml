@@ -7,6 +7,11 @@ user:
       title: Logout
 
 forms:
+  select:
+    placeholder: Select an option
+    noData: No data
+  numericInput:
+    placeholder: Input a number
   authenticate:
     login:
       label: Login
@@ -26,6 +31,8 @@ actions:
     title: Edit
   delete:
     title: Delete
+    confirmOne: Are you sure you want to delete the selected entry?
+    confirmFew: Are you sure you want to delete selected entries?
   refresh:
     title: Refresh
   reload:
@@ -38,6 +45,33 @@ actions:
     title: Cancel
   close:
     title: Close
+  back:
+    title: Back
+  forward:
+    title: Forward
+
+documents:
+  fields:
+    type:
+      title: Document name
+    status:
+      title: Status
+  actions:
+    upload:
+      title: Upload
+    download:
+      title: Download
+  statuses:
+    uploaded: Uploaded
+    notUploaded: Not Uploaded
+    uploadingError: Uploading Error
+    signed: Signed
+    unsigned: Unsigned
+  statusMessages:
+    uploaded: File "{{name}}" uploaded successfully
+    uploadingError: Error loading file "{{name}}"
+    downloadingError: File download error
+    deletingError: File deletion error
 
 errors:
   startupError:
@@ -57,3 +91,7 @@ errors:
   authError:
     title: Authentication error
     desc: Check are login and password entered correctly
+  pageNotFound:
+    title: 404
+    desc: Page not found
+    action: Go to main page

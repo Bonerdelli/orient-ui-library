@@ -10,6 +10,20 @@ common:
   updatedAt:
     title: Дата обновления
 
+customer:
+  title: Заказчик
+  fields:
+    inn:
+      title: Инн
+    shortName:
+      title: Наименование юр. лица
+    chief:
+      title: Руководитель
+    soato:
+      title: СОАТО
+    address:
+      title: Адрес
+
 company:
   title: Компания
   fields:
@@ -116,3 +130,36 @@ companyRequisites:
       title: МФО
     accountNumber:
       title: Номер счёта
+
+order:
+  title: Заявка
+  types:
+    frameOrder:
+      title: Заявка на рамочный договор
+    frameSimpleOrder:
+      title: Заявка на упрощенный рамочный договор
+    factoring:
+      title: Заявка на факторинг
+  fields:
+    id:
+      title: Номер заявки
+    clientInn:
+      title: ИНН Клиента
+    clientName:
+      title: Наименование юр. лица Клиента
+    updatedAt:
+      title: Дата и время модификации
+    createdAt:
+      title: Дата и время создания заявки
+    statusCode:
+      title: Код статуса
+    statusName:
+      title: Статус
+    amount:
+      title: Сумма
+    currencyCode:
+      title: Код валюты
+    currencyName:
+      title: Названик валюты
+    typeCode:
+      title: Вид заявки

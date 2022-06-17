@@ -7,6 +7,9 @@ layout-header-color: '#ffffff' # Header text color
 layout-header-background: '#375aa0'
 layout-header-height: 48px
 
+typography-title-font-weight: 600
+typography-title-margin-top: 1.2em
+
 ###
 # Project-specific theme variables, used both in styles and components
 ###
